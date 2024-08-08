@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col  md:flex-row bg-black text-white h-full">
+    <div className="flex flex-col  md:flex-row bg-slate-900 text-white h-full">
      <div className="p-6 lg:p-14  md:w-1/2 ">
   <div className="text-left">  {/* Ensure text alignment is set to left */}
     <p className="text-sm">4.6+ <span className="text-yellow-400">★★★★★</span> 2354 Reviews</p>
@@ -32,7 +32,7 @@ const HeroSection = () => {
 
 <div className="md:w-1/2 relative flex flex-col items-center mt-10 lg:mt-12">
   {/* YouTube Video Embedding */}
-  <div className="w-full flex justify-center items-center bg-black px-10 lg:px-0 lg:mt-10">
+  <div className="w-full flex justify-center items-center bg-slate-900 px-10 lg:px-0 lg:mt-10">
     <iframe
       className="w-full md:w-3/4 aspect-video"  // Ensures the video maintains a 16:9 aspect ratio
       src="https://www.youtube.com/embed/O5hShUO6wxs"

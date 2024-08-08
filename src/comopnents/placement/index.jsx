@@ -2,11 +2,11 @@ import React from 'react';
 
 const PlacementStats = () => {
   return (
-    <div className="bg-white text-black p-6 md:p-12">
-      <div className="max-w-6xl mx-auto">
+    <div className="bg-white text-black p-6 lg:px-4 lg:py-8">
+      <div className="max-w-8xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Industry Leading Placements</h2>
-          <p>Kick start your Data Science career today with our flagship program in collaboration with E&ICT IIT Guwahati. Learn Data Science with top engineers. Challenge yourself by building real time projects.</p>
+          <h2 className="text-5xl font-semibold mb-4 py-7">Industry Leading Placements</h2>
+          <p className='text-xl lg:px-40 py-4 lg:py-5'>Kick start your Data Science career today with our flagship program in collaboration with E&ICT IIT Guwahati. Learn Data Science with top engineers. Challenge yourself by building real time projects.</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-8">
@@ -28,7 +28,7 @@ const PlacementStats = () => {
           </div>
         </div>
 
-        <div className="text-center">
+        <div className="text-center py-10">
           <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded">
             Download Placement Report
           </button>

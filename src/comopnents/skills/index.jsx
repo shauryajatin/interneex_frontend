@@ -30,7 +30,7 @@ const skills = [
 
 const SkillsSection = () => {
   return (
-    <div className="bg-black text-white py-12 px-6">
+    <div className="bg-slate-900 text-white py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12">Skills you’ll acquire</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
