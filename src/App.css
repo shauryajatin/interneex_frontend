@@ -52,3 +52,8 @@
 .cta-button:hover {
   background: linear-gradient(to right, #9333EA, #DB2777); /* Darker gradient on hover */
 }
+.gradient-text {
+  background: linear-gradient(to right,  #9333EA, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

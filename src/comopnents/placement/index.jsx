@@ -5,8 +5,8 @@ const PlacementStats = () => {
     <div className="bg-white text-black p-6 lg:px-4 lg:py-8">
       <div className="max-w-8xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-semibold mb-4 py-7">Industry Leading Placements</h2>
-          <p className='text-xl lg:px-40 py-4 lg:py-5'>Kick start your Data Science career today with our flagship program in collaboration with E&ICT IIT Guwahati. Learn Data Science with top engineers. Challenge yourself by building real time projects.</p>
+          <h2 className="text-5xl font-semibold mb-4 py-7">Mentoring Students</h2>
+          <p className='text-xl lg:px-40 py-4 lg:py-5'>Interneex is a leading tech education platform offering comprehensive training in full stack development to equip students with practical skills and connect them to valuable internship opportunities</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-8">

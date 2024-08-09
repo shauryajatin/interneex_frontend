@@ -43,7 +43,7 @@ const WhyChoose = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
           {services.map(service => (
             <div key={service.name} className="flex flex-col items-center lg:py-8 lg:px-6">
-              <FontAwesomeIcon icon={service.icon} className="text-4xl mb-4" />
+              <FontAwesomeIcon icon={service.icon} className="text-4xl mb-4 gradient-text" />
               <h3 className="text-lg font-semibold">{service.name}</h3>
               <p>{service.description}</p>
             </div>
