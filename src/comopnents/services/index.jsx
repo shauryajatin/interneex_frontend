@@ -4,28 +4,28 @@ import { faBriefcase, faUserTie, faUserCheck, faProjectDiagram, faHandshake, faS
 
 const services = [
   {
-    name: "Placement Support",
-    description: "Complete support from our dedicated placement team until you get a job",
+    name: "Real-World Experience:",
+    description: "We provide opportunities to work on live projects with our expert tech team.",
     icon: faBriefcase
   },
   {
-    name: "Experienced Mentorship",
-    description: "Receive guidance and support from seasoned professionals in the tech industry to enhance your learning experience.",
+    name: "Personalized Mentorship:",
+    description: "Benefit from one-on-one guidance from industry veterans dedicated to your success.",
     icon: faUserTie
   },
   {
-    name: "Mock Interviews",
-    description: "Professional mock interviews assistance",
+    name: "Placement Assistance:",
+    description: "Secure top-tier internships and jobs through our extensive network and resources.",
     icon: faUserCheck
   },
   {
-    name: "Capstone Projects",
-    description: "Undertake Industry certified Capstone Projects from companies like Zomato & BookMyShow",
+    name: "Recognized Certification",
+    description: "Earn a valuable internship experience certificate that enhances your resume and validates your skills.",
     icon: faProjectDiagram
   },
   {
-    name: "100% Job Assurance",
-    description: "Get all the support to crack your dream tech job.",
+    name: "Flexible Learning:",
+    description: "Our programs fit your schedule, whether you’re a full-time student or balancing other commitments.",
     icon: faHandshake
   },
   {

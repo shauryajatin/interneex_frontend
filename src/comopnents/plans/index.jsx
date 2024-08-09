@@ -65,7 +65,7 @@ const PricingCard = ({ plan }) => {
           <li key={index} className="text-sm mb-1">✅ {feature}</li>
         ))}
       </ul>
-      <button className="mt-4 bg-white text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300">
+      <button className="mb-4 bg-white text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4">
         Enrol Now
       </button>
     </div>
