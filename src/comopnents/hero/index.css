@@ -1,0 +1,236 @@
+.hero-section {
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: rgb(15 23 42); /* Dark background color */
+    overflow: hidden;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-section .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.hero-section .navbar a {
+    color: white;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.hero-section .navbar a:hover {
+    color: #BBBBBB; /* Hover color */
+}
+
+.hero-section .cta-button {
+    background: linear-gradient(to right, #A855F7, #EC4899);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.hero-section .cta-button:hover {
+    background: linear-gradient(to right, #9333EA, #DB2777); /* Darker gradient on hover */
+}
+
+.hero-section .hero-illustration {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-section .hero-content {
+    max-width: 600px;
+}
+
+.hero-section .hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-section .hero-content p {
+    font-size: 1rem;
+    color: #CCCCCC;
+    margin-bottom: 20px;
+}
+
+.hero-section .background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1;
+}
+
+/* Wavy SVG */
+.wavy-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 5;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(to right,  #9333EA, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Arrow and Text Position */
+.arrow-text {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: #A855F7;
+}
+
+.arrow-text .arrow {
+    margin-right: 10px;
+    fill: #000000;
+}
+
+.rotated-arrow {
+    transform: rotate(180deg);
+}
+
+/* Hamburger Menu */
+.menu {
+    display: none;
+}
+
+.menu.block {
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .menu {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu.block {
+        display: block;
+    }
+
+    .navbar button {
+        display: block;
+    }
+
+    .navbar .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1A1A1A;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .navbar .menu a {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* HeroSection.css */
+
+/* Existing styles... */
+
+./* HeroSection.css */
+
+/* Existing styles... */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-items {
+    display: flex;
+   
+  }
+  
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #000; /* Adjust as needed */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .navbar-menu a {
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px;
+    transition: all 0.3s;
+  }
+  
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  @media (max-width: 1024px) {
+    .navbar-items {
+      display: none; /* Hide horizontal navbar on smaller screens */
+    }
+  
+    .hamburger {
+      display: flex; /* Display hamburger menu on smaller screens */
+    }
+  
+    .navbar-menu.active {
+      display: flex; /* Show vertical menu when active */
+    }
+  }
+  

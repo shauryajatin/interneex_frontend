@@ -9,8 +9,8 @@ const services = [
     icon: faBriefcase
   },
   {
-    name: "Resume Building",
-    description: "Resume sharing in our network of 700+ hiring partners",
+    name: "Experienced Mentorship",
+    description: "Receive guidance and support from seasoned professionals in the tech industry to enhance your learning experience.",
     icon: faUserTie
   },
   {
