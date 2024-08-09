@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './index.css'
 
 const items = [
   {
@@ -57,28 +58,37 @@ const ProblemTarget = () => {
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
   return (
-    <div className="bg-white py-10 text-black">
-      <div className="text-center py-10">
-        <h1 className="text-5xl font-bold mb-8">Things your spreadsheet wishes it could do</h1>
+    <div>
+    <div className="text-center mt-4 py-2 lg:py-10">
+      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold lg:mb-8">Course Overview</h1>
+    </div>
+    <div className="bg-white text-black mb-10">
+    
+<div className="flex flex-col  md:flex-row lg:flex-row overflow-hidden">
+  <div className="flex md:flex-col lg:flex-col md:w-1/3 lg:w-1/3 lg:ml-4 overflow-x-auto md:overflow-visible lg:overflow-visible scrollbar-hide">
+    {items.map((item, index) => (
+      <div key={index} onClick={() => setSelectedItem(item)} 
+           className={`cursor-pointer mx-2 p-2 mb-3 lg:mb-0 mt-4 ${selectedItem.name === item.name ? 'bg-slate-900' : 'bg-white'} 
+           ${selectedItem.name === item.name ? 'text-white' : 'text-black'} flex-shrink-0`}>
+        <h2 className="font-bold my-3">{item.name}</h2>
       </div>
-      <div className="flex flex-col md:flex-row lg:flex-row h-screen overflow-hidden">
-        <div className="w-full md:w-1/3 lg:w-1/3 p-4 overflow-auto">
-          {items.map((item, index) => (
-            <div key={index} onClick={() => setSelectedItem(item)} className={`cursor-pointer p-2 hover:bg-slate-700 mt-4  ${selectedItem.name === item.name ? 'bg-slate-600' : ''}`}>
-              <h2 className="font-bold my-3">{item.name}</h2>
-            </div>
-          ))}
+    ))}
+
+</div>
+
+        <div className="bg-slate-900 md:w-2/3 lg:w-2/3 pt-4 overflow-auto mt-2 py-10 lg:mx-20 lg:rounded-xl">
+          <h2 className="text-3xl font-bold mb-2 text-white">{selectedItem.name}</h2>
+          <ul className=" pl-5 lg:ml-20 lg:mt-10 space-y-5 text-white pt-2" 
+              style={{ maxHeight: '400px', overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {selectedItem.features.map((feature, index) => (
+              <li key={index} className="text-lg mb-1 text-left">🎯 {feature}</li>
+            ))}
+          </ul>
         </div>
-        <div className=" bg-blue-200 w-full md:w-2/3 lg:w-2/3 p-4 overflow-auto lg:mx-20">
-      <h2 className="text-3xl font-bold mb-3 text-black">{selectedItem.name}</h2>
-      <ul className="list-disc pl-5 lg:ml-20 lg:mt-10 space-y-5 text-black" style={{ maxHeight: '500px', overflowY: 'auto',  }}>
-        {selectedItem.features.map((feature, index) => (
-          <li key={index} className="text-lg mb-1 text-left">{feature}</li>
-        ))}
-      </ul>
-    </div>
       </div>
     </div>
+  </div>
+  
   );
 };
 

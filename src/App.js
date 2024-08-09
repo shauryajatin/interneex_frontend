@@ -14,11 +14,12 @@ function App() {
    {/* <Navbar /> */}
    <HeroSection />
    <PlacementStats />
-   <Skills />
-   <WhyChoose /> 
-   <Pricing />
-   <ProblemTarget />
 
+   <Skills />
+   <ProblemTarget />
+   <Pricing />
+
+   <WhyChoose /> 
     </div>
   );
 }

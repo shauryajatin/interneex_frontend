@@ -30,14 +30,14 @@ const skills = [
 
 const SkillsSection = () => {
   return (
-    <div className="bg-slate-900 text-white py-12 px-6">
+    <div className="bg-slate-900 text-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Skills you’ll acquire</h2>
+        <h2 className="text-3xl font-bold text-center mb-14">Skills you’ll acquire</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
           {skills.map(skill => (
             <div key={skill.name} className="flex flex-col items-center">
               <div className="bg-gray-800 p-4 rounded-lg">
-                <img src={skill.icon} alt={skill.name} className="h-12 w-12" />
+                <img src={skill.icon} alt={skill.name} className="h-12 w-13" />
               </div>
               <p className="mt-2">{skill.name}</p>
             </div>
