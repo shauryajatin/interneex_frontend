@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './index.css';
 const PlacementStats = () => {
   return (
     <div className="bg-white text-black p-6 lg:px-4 lg:py-8">
@@ -29,7 +29,7 @@ const PlacementStats = () => {
         </div>
 
         <div className="text-center py-10">
-          <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded">
+          <button className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 hover:bg-slate-600 text-white font-bold py-2 px-8 rounded">
             Download Placement Report
           </button>
         </div>
