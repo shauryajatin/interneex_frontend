@@ -32,7 +32,7 @@ const plans = [
       "Job Assistance",
       "6 months Non paid Internship Experience Certificate valid in all companies across the Globe."
     ],
-    backgroundColor: "bg-blue-500",
+    backgroundColor: "bg-cyan-900",
     textColor: "text-white"
   },
   {
@@ -49,7 +49,7 @@ const plans = [
       "Job Assistance",
       "6 months Non paid Internship Experience Certificate valid in all companies across the Globe."
     ],
-    backgroundColor: "bg-green-500",
+    backgroundColor: "bg-sky-900",
     textColor: "text-white"
   }
 ];
@@ -58,11 +58,11 @@ const PricingCard = ({ plan }) => {
   return (
     <div className={`max-w-sm rounded-xl overflow-hidden shadow-xl ${plan.backgroundColor} ${plan.textColor} p-6 m-4 text-center`}>
       <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
-      <p className="text-xl font-bold">{plan.price}</p>
+      <p className="text-xl font-bold mb-2">{plan.price}</p>
       <p className="text-sm mb-4">{plan.duration}</p>
-      <ul className="list-disc ml-4 text-left">
+      <ul className=" ml-1 text-left space-y-2">
         {plan.features.map((feature, index) => (
-          <li key={index} className="text-sm mb-1">{feature}</li>
+          <li key={index} className="text-sm mb-1">✅ {feature}</li>
         ))}
       </ul>
       <button className="mt-4 bg-white text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300">
@@ -75,6 +75,12 @@ const PricingCard = ({ plan }) => {
 const Pricing = () => {
   return (
     <div className="bg-slate-900 py-10">
+      <div className="bg-slate-900 text-white py-8 px-4">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl font-bold text-center uppercase">Find the perfect fit for your budget</h1>
+        <p className="text-center mt-4 text-xl">Choose from our range of flexible pricing options that cater to your specific needs.</p>
+      </div>
+    </div>
       <div className="flex flex-wrap justify-center">
         {plans.map((plan, index) => (
           <PricingCard key={index} plan={plan} />
