@@ -16,11 +16,11 @@ function App() {
    {/* <Navbar /> */}
    <HeroSection />
    {/* <PlacementStats /> */}
-   <Mentor />
+   <Mentor id='about' />
    <DynamicComponentApp />
    <Skills />
    
-   <WhyChoose /> 
+   <WhyChoose id='servicea'/> 
    <Pricing />
    <Footer />
 

@@ -3,7 +3,7 @@ import { FaLinkedin, FaInstagram, FaTwitter, FaGlobe } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-950 dark:bg-slate-950 py-8">
+    <footer className="bg-slate-950 dark:bg-slate-950 py-8 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="mb-8 lg:mb-0">
@@ -13,21 +13,21 @@ const Footer = () => {
                 className="h-10 mr-2"
                 alt="Modgenics Logo"
               /> */}
-              <span className="self-center text-3xl font-nexaBold whitespace-nowrap dark:text-white">
+              <span className="sm:text-center pl-28 pr-25 lg:px-2 lg:self-center text-3xl  whitespace-nowrap dark:text-white">
                 Interneex
               </span>
             </a>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
-              <ul className="text-gray-600 dark:text-gray-400 font-medium space-y-4">
+              <ul className="text-gray-600 dark:text-gray-400 font-medium space-y-5">
                 <li>
-                  <a href="/company" className="hover:underline">
+                  <a href="#about" className="hover:underline">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="/services" className="hover:underline">
+                  <a href="#services" className="hover:underline">
                     Services
                   </a>
                 </li>

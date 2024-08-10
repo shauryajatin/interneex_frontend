@@ -88,7 +88,7 @@ const Mentor = () => {
     };
   
     return (
-      <div className="relative w-full">
+      <div className="relative w-full lg:my-16">
         <div className="grid grid-cols-1 lg:grid-cols-4 sm:mt-2 mt-6 mb-6">
           <div className="col-span-4 sm:pl-6 lg:col-span-1 lg:pl-10 lg:pr-4">
             <h2 className="text-3xl sm:text-3xl font-bold sm:mb-2 lg:mb-1 lg:mt-2 text-justify px-4 lg:px-0">Meet Our Mentors</h2>
