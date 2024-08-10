@@ -14,11 +14,10 @@ function App() {
     <div className="App">
    {/* <Navbar /> */}
    <HeroSection />
-   <PlacementStats />
+   {/* <PlacementStats /> */}
    <Mentor />
-
-   <Skills />
    <DynamicComponentApp />
+   <Skills />
    <Pricing />
 
    <WhyChoose /> 
