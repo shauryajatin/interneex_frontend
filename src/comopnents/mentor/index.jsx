@@ -1,41 +1,76 @@
 import React, { useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-
-
+import suraj from '../../assets/mentors/suraj.jpeg';
+import vijay from '../../assets/mentors/vijay.jpeg';
+import ayush from '../../assets/mentors/ayush.jpeg';
+import sumit from '../../assets/mentors/sumit.jpeg';
+import sunil from '../../assets/mentors/sunil.jpeg';
+import ashok from '../../assets/mentors/ashok.jpeg';
+import narendra from '../../assets/mentors/narendra.png';
+import vishal from '../../assets/mentors/vishal.jpeg';
 const mentors = [
   {
-    name: 'John Doe',
-    experience: '15 years in Supply Chain Management',
-    education: 'MBA, Harvard Business School',
-    img: null, // fallback if image fails to import
+    name: 'Suraj Pratap Singh',
+    experience: 'CO founder Interneex,Modgenis EX CTO - Hans Matrimony 9+ Yrs OF Exp',
+    education: 'B.tech, IIT KANPUR',
+    img: suraj, // fallback if image fails to import
     alt: 'John Doe',
   },
   {
-    name: 'Jane Smith',
-    experience: '10 years in Inventory Planning',
-    education: 'MSc, Stanford University',
-    img: null,
+    name: 'Vijay Devra',
+    experience: 'EX SBI , 9+ Yrs OF Exp',
+    education: 'B.tech, IIT KANPUR',
+    img: vijay,
     alt: 'Jane Smith',
   },
+
   {
-    name: 'Emily Johnson',
-    experience: '8 years in Logistics',
-    education: 'BBA, Wharton School of Business',
-    img: null,
+    name: 'Ayush Sharma',
+    experience: 'Ex Qualcom EX CDAC, 6+ years of experience' ,
+    education: ' ',
+    img: ayush,
     alt: 'Emily Johnson',
   },
+ 
+
   {
-    name: 'Michael Brown',
-    experience: '12 years in Process Automation',
-    education: 'MS, MIT',
-    img: null,
+    name: ' Sumit kumar',
+    experience: 'Prof Thapar University,  8+ yrs of Exp',
+    education: '  Phd IIIT Allahabd',
+    img: sumit,
     alt: 'Michael Brown',
   },
+
+
   {
-    name: 'Sarah Wilson',
-    experience: '7 years in Retail Supply Chain',
-    education: 'MBA, Kellogg School of Management',
-    img: null,
+    name: '  Sunil singh',
+    experience: 'EX Microsoft, VMware, Broadcom 7+ Yrs of Exp',
+    education: '',
+    img: sunil,
+    alt: 'Sarah Wilson',
+  },
+
+
+
+  {
+    name: 'Ashok Kumar',
+    experience: 'EX Amazon(USA) 8+ years of Ex',
+    education: 'B.tech IIT KANPUR',
+    img: ashok,
+    alt: 'Sarah Wilson',
+  },
+  {
+    name: 'Narendra Roy',
+    experience: 'EX Exl 7+ Yrs of Exp',
+    education: 'B.tech IIT KANPUR',
+    img: narendra,
+    alt: 'Sarah Wilson',
+  },
+  {
+    name: 'Vishal Tomar',
+    experience: 'EX Adobe(USA) 8+ years of Ex',
+    education: 'B.tech IIT KANPUR',
+    img: vishal,
     alt: 'Sarah Wilson',
   },
 ];
