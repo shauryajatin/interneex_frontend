@@ -59,6 +59,7 @@ const WebDev = () => {
 
   return (
     <div>
+
     <div className="bg-white text-black mb-10">
     
 <div className="flex flex-col  md:flex-row lg:flex-row overflow-hidden">

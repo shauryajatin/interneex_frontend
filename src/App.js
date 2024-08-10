@@ -18,9 +18,10 @@ function App() {
    <Mentor />
    <DynamicComponentApp />
    <Skills />
+   
+   <WhyChoose /> 
    <Pricing />
 
-   <WhyChoose /> 
     </div>
   );
 }
