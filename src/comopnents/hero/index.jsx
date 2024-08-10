@@ -24,7 +24,7 @@ const HeroSection = () => {
           <a href="#contact" className="hover:text-gray-400">Contact</a>
         </div>
         <div className="flex hidden lg:block space-x-4 items-center">
-          <a href="#login" className="hover:text-gray-400">Get Started</a>
+          {/* <a href="#login" className="hover:text-gray-400">Get Started</a> */}
           <a href="#talk" className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md">Talk to Us</a>
         </div>
         <div className={`hamburger lg:hidden ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -33,13 +33,9 @@ const HeroSection = () => {
           <div></div>
         </div>
         <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
-          <a href="#product" className="hover:text-gray-400" onClick={toggleMenu}>Product</a>
-          <a href="#pricing" className="hover:text-gray-400" onClick={toggleMenu}>Pricing</a>
-          <a href="#industry" className="hover:text-gray-400" onClick={toggleMenu}>Industry</a>
-          <a href="#customer-stories" className="hover:text-gray-400" onClick={toggleMenu}>Customer Stories</a>
-          <a href="#about" className="hover:text-gray-400" onClick={toggleMenu}>About</a>
-          <a href="#blog" className="hover:text-gray-400" onClick={toggleMenu}>Blog</a>
-          <a href="#login" className="hover:text-gray-400" onClick={toggleMenu}>Login</a>
+        <a href="#about" className="hover:text-gray-400">About</a>
+          <a href="#service" className="hover:text-gray-400">Service</a>
+          <a href="#contact" className="hover:text-gray-400">Contact</a>
           <a href="#talk" className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md" onClick={toggleMenu}>Talk to Us</a>
         </div>
       </nav>

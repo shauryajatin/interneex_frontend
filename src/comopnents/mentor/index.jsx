@@ -56,8 +56,8 @@ const Mentor = () => {
       <div className="relative w-full">
         <div className="grid grid-cols-1 lg:grid-cols-4 sm:mt-2 mt-6 mb-6">
           <div className="col-span-4 sm:pl-6 lg:col-span-1 lg:pl-10 lg:pr-4">
-            <h2 className="text-3xl sm:text-3xl font-bold sm:mb-2 lg:mb-1 lg:mt-2 text-justify">Meet Our Mentors</h2>
-            <p className="mb-6 py-3 lg:pt-10 text-lg sm:text-base lg:text-lg text-justify">
+            <h2 className="text-3xl sm:text-3xl font-bold sm:mb-2 lg:mb-1 lg:mt-2 text-justify px-4 lg:px-0">Meet Our Mentors</h2>
+            <p className="mb-6 py-3 lg:pt-10 text-lg sm:text-base lg:text-lg text-justify px-4 lg:px-0">
               Our mentors bring years of experience across various industries. Learn more about their backgrounds and expertise! Grow and learn from the best.
             </p>
   

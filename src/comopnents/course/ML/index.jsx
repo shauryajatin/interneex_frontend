@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css'
 
-const FrontEndComponent = () => {
+const ML = () => {
   return (
     <div className='mx-4 my-4 lg:mx-40 lg:my-10'>
     <div className="flex items-center justify-center bg-slate-900 px-100 rounded-3xl ">
@@ -14,4 +14,4 @@ const FrontEndComponent = () => {
   );
 };
 
-export default FrontEndComponent;
+export default ML;
