@@ -1,0 +1,42 @@
+/* Add this to your global.css or a specific CSS module */
+.neon-text {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: neon 1.5s ease-in-out infinite alternate;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+}
+
+@keyframes neon {
+  from {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 90px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+  }
+  to {
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #f0f,
+      0 0 30px #f0f,
+      0 0 40px #0ff,
+      0 0 70px #0ff,
+      0 0 80px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+  }
+}
