@@ -21,8 +21,9 @@ function App() {
    <DynamicComponentApp />
    {/* <Skills /> */}
    <WhyChoose id="services"/> 
-   <Pricing id="pricing" />
    <TestimonialSection  id="testimonials"/>
+   <Pricing id="pricing" />
+ 
    <Footer />
 
     </div>
