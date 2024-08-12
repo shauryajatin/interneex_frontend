@@ -9,6 +9,7 @@ import Pricing from './comopnents/plans';
 import DynamicComponentApp from './comopnents/course';
 import Mentor from './comopnents/mentor';
 import Footer from './comopnents/footer';
+import TestimonialSection from './comopnents/testimonials';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
    {/* <Skills /> */}
    <WhyChoose id="services"/> 
    <Pricing />
+   <TestimonialSection />
    <Footer />
 
     </div>

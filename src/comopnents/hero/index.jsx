@@ -49,14 +49,24 @@ const HeroSection = () => {
             Services
           </a>
           <a
-            href="#contact"
+            href="#pricing"
             className="hover:text-gray-400"
             onClick={() => {
               openModal();
-              scrollToSection("talk");
+              scrollToSection("pricing");
             }}
           >
-            Contact
+            Pricing
+          </a>
+          <a
+            href="#testimonials"
+            className="hover:text-gray-400"
+            onClick={() => {
+              openModal();
+              scrollToSection("testimonials");
+            }}
+          >
+           Testimonials
           </a>
         </div>
         <div className="flex hidden lg:block space-x-4 items-center">
@@ -101,14 +111,24 @@ const HeroSection = () => {
             Services
           </a>
           <a
-            href="#contact"
+            href="#pricing"
             className="hover:text-gray-400"
             onClick={() => {
               openModal();
-              scrollToSection("talk");
+              scrollToSection("pricing");
             }}
           >
-            Contact
+            Pricing
+          </a>
+          <a
+            href="#testimonials"
+            className="hover:text-gray-400"
+            onClick={() => {
+              openModal();
+              scrollToSection("testimonials");
+            }}
+          >
+            Testimonals
           </a>
           <a
             href="#talk"
