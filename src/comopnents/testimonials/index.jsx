@@ -1,4 +1,6 @@
 import React from "react";
+import { FaFacebook, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa"
+import facebook from "../../assets/images/Facebook.png";
 
 const testimonials = [
   {
@@ -12,8 +14,8 @@ const testimonials = [
     quote: "It has broadened my horizons and helped me advance my career. The community is incredibly supportive.",
     name: "Marcell Glock",
     title: "Graphic Designer",
-    company: "Coinbase",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Coinbase.svg", // Fixed logo link to use an SVG version
+    company: "Facebook",
+    logo: facebook, // Fixed logo link to use an SVG version
   },
   {
     quote: "Its intuitive design and powerful features make it indispensable. I can't imagine going back to life before it!",
@@ -26,7 +28,7 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="bg-gray-50 py-12 px-6 lg:px-8">
+    <section className="bg-gray-50 py-12 px-6 lg:px-8" id="testimonials">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (

@@ -52,7 +52,7 @@ const HeroSection = () => {
             href="#pricing"
             className="hover:text-gray-400"
             onClick={() => {
-              openModal();
+        
               scrollToSection("pricing");
             }}
           >
@@ -62,7 +62,7 @@ const HeroSection = () => {
             href="#testimonials"
             className="hover:text-gray-400"
             onClick={() => {
-              openModal();
+           
               scrollToSection("testimonials");
             }}
           >
@@ -114,7 +114,6 @@ const HeroSection = () => {
             href="#pricing"
             className="hover:text-gray-400"
             onClick={() => {
-              openModal();
               scrollToSection("pricing");
             }}
           >
@@ -124,7 +123,7 @@ const HeroSection = () => {
             href="#testimonials"
             className="hover:text-gray-400"
             onClick={() => {
-              openModal();
+            
               scrollToSection("testimonials");
             }}
           >

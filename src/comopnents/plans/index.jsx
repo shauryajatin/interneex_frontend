@@ -80,7 +80,7 @@ const PricingCard = ({ plan }) => {
 
 const Pricing = () => {
   return (
-    <div className="bg-slate-900 py-10">
+    <div className="bg-slate-900 py-10 " id="pricing">
       <div className="bg-slate-900 text-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-center uppercase">
