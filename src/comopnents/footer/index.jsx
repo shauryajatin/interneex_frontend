@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaLinkedin, FaInstagram, FaTwitter, FaGlobe } from 'react-icons/fa';
+import React from "react";
+import { FaLinkedin, FaInstagram, FaTwitter, FaGlobe } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -43,14 +43,20 @@ const Footer = () => {
                 India
               </h2>
               <p className="text-gray-500 dark:text-gray-400 font-medium">
-                +91 8790504044<br />
-                Address - Towr B, ITHUM TOWER, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309
+                +91 8790504044
+                <br />
+                Address - Towr B, ITHUM TOWER, Block A, Industrial Area, Sector
+                62, Noida, Uttar Pradesh 201309
               </p>
             </div>
             <div className="sm:hidden lg:block">
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-1">
-                  <a href="#Privacy" className="hover:underline" target="_blank">
+                  <a
+                    href="#Privacy"
+                    className="hover:underline"
+                    target="_blank"
+                  >
                     Privacy Policy
                   </a>
                 </li>
@@ -66,7 +72,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-200 dark:border-gray-700" />
         <div className="flex flex-col lg:flex-row justify-between items-center">
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            © 2024{" "}Interneex™. All Rights Reserved.
+            © 2024 Interneex™. All Rights Reserved.
           </span>
           <div className="flex mt-4 lg:mt-0 space-x-5">
             <a
