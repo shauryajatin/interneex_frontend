@@ -71,7 +71,7 @@ const PricingCard = ({ plan }) => {
           </li>
         ))}
       </ul>
-      <button className="mb-4 bg-white text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4">
+      <button className="mb-4 bg-purple-100 text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4">
         Enrol Now
       </button>
     </div>

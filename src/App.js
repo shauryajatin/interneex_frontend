@@ -18,7 +18,7 @@ function App() {
    {/* <PlacementStats /> */}
    <Mentor id="about" />
    <DynamicComponentApp />
-   <Skills />
+   {/* <Skills /> */}
    <WhyChoose id="services"/> 
    <Pricing />
    <Footer />

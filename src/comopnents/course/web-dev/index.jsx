@@ -114,7 +114,7 @@ const WebDev = () => {
 
   return (
     <div>
-      <div className="bg-white text-black mb-10">
+      <div className="bg-purple-100 text-black mb-10">
         <div className="flex flex-col  md:flex-row lg:flex-row overflow-hidden">
           <div className="flex md:flex-col lg:flex-col md:w-1/3 lg:w-1/3 lg:ml-4 overflow-x-auto md:overflow-visible lg:overflow-visible scrollbar-hide">
             {items.map((item, index) => (
@@ -122,7 +122,7 @@ const WebDev = () => {
                 key={index}
                 onClick={() => setSelectedItem(item)}
                 className={`cursor-pointer mx-2 p-2 mb-3 lg:mb-0 mt-4 ${
-                  selectedItem.name === item.name ? "bg-slate-900" : "bg-white"
+                  selectedItem.name === item.name ? "bg-slate-900" : "bg-purple-100"
                 } 
            ${
              selectedItem.name === item.name ? "text-white" : "text-black"
@@ -134,7 +134,7 @@ const WebDev = () => {
           </div>
 
           <div className="bg-slate-900 md:w-2/3 lg:w-2/3 pt-4 overflow-auto mt-2 py-10 lg:mx-20 lg:rounded-xl">
-            <h2 className="text-3xl font-bold mb-2 text-white">
+            <h2 className="text-3xl text-left pl-5 lg:ml-20 pt-3 font-bold mb-2 text-white">
               {selectedItem.name}
             </h2>
             <ul

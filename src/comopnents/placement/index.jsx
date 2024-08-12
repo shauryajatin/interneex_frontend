@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 const PlacementStats = () => {
   return (
-    <div className="bg-white text-black p-6 lg:px-4 lg:py-8">
+    <div className="bg-purple-100 text-black p-6 lg:px-4 lg:py-8">
       <div className="max-w-8xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-semibold mb-4 py-7">

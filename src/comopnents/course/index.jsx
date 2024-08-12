@@ -25,18 +25,18 @@ const DynamicComponentApp = () => {
     <div>
       <div className="text-center mt-4">
         {" "}
-        <div className="text-center mt-4 lg:mt-8">
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold lg:mb-2">
+        <div className="text-center mt-10 lg:mt-30">
+          <h1 className="text-4xl md:text-4xl lg:text-6xl font-bold my-8 lg:mb-2">
             Course Overview
           </h1>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-start items-center pl-2 lg:pl-6">
           <div className="relative">
             <select
               onChange={handleComponentChange}
               className="bg-slate-900 text-white text-lg font-semibold py-2 pl-8 pr-10 rounded-lg shadow-lg my-3 lg:my-6 appearance-none focus:ring-6 focus:ring-slate-500"
             >
-              <option value="WebDev">Web Development</option>
+              <option value="WebDev">Full Stack Development</option>
               <option value="ML">Machine Learning</option>
               <option value="ML">Scrum Master</option>
             </select>
