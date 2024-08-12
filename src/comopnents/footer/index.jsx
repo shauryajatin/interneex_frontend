@@ -9,7 +9,7 @@ const Footer = () => {
           
           {/* Address Section */}
           <div>
-            <h2 className="text-white text-xl mb-4 text-center lg:text-left">Info</h2>
+            <h2 className="text-white text-2xl mb-4 text-center lg:text-left">Interneex</h2>
             <ul className="text-gray-400 space-y-2">
               <li className="flex items-center lg:justify-stat lg:text-left ">
                 <FaMapMarkerAlt className="mr-2 mt-1 h-8 w-8" />
@@ -42,7 +42,7 @@ const Footer = () => {
 
           {/* Services Section */}
           <div>
-            <h2 className="text-white text-xl mb-4">Services</h2>
+        
             <ul className="text-gray-400 space-y-2">
             <a href="#about" className="hover:underline block">About</a>
               <a href="#services" className="hover:underline block">Services</a>
