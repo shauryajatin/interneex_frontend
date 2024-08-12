@@ -28,9 +28,9 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <div className="bg-gray-50 py-12 px-6 lg:px-8 bg-purple-100" id="testimonials">
+    <div className="pt-2 pb-12 px-6 lg:px-8 bg-purple-100" id="testimonials">
          <div className="text-center mt-10 lg:mt-30">
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold my-8 lg:mb-2">
+          <h1 className="text-5xl md:text-5xl lg:text-6xl font-semibold my-8 lg:mb-4">
             Testimonials
           </h1>
         </div>

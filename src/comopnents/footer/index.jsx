@@ -9,17 +9,17 @@ const Footer = () => {
           
           {/* Address Section */}
           <div>
-            <h2 className="text-white text-xl mb-4 text-left">Info</h2>
+            <h2 className="text-white text-xl mb-4 text-center lg:text-left">Info</h2>
             <ul className="text-gray-400 space-y-2">
-              <li className="flex items-start">
-                <FaMapMarkerAlt className="mr-0 mt-1 h-8 w-8" />
+              <li className="flex items-center lg:justify-stat lg:text-left ">
+                <FaMapMarkerAlt className="mr-2 mt-1 h-8 w-8" />
                 <span>Address - Towr B, ITHUM TOWER, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309</span>
               </li>
-              <li className="flex items-start">
+              <li className="flex items-center lg:items-start">
                 <FaPhone className="mr-2 mt-1" />
                 <span>+91 8790504044</span>
               </li>
-              <li className="flex items-start">
+              <li className="flex items-center lg:items-start">
                 <FaEnvelope className="mr-2 mt-1" />
                 <span>Info@interneex.com</span>
               </li>

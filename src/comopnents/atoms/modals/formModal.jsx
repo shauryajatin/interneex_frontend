@@ -32,8 +32,9 @@ const Modal = ({ isOpen, onClose }) => {
         {/* Close Button at the Top */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+          className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 "
           aria-label="Close Modal"
+          style={{minHeight:'10px', minWidth:'10px'}}
         >
           &times;
         </button>
@@ -107,14 +108,28 @@ const Modal = ({ isOpen, onClose }) => {
               <div className="text-sm text-gray-600 mb-4">
                 By continuing, you confirm that you have read and agreed to our <a href="#" className="text-purple-500">Terms</a> and <a href="#" className="text-purple-500">Privacy Policy</a>.
               </div>
-              <div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-4 py-3 bg-gradient-to-r from-purple-400 to-pink-500  text-white font-bold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  CONTINUE
-                </button>
+              <div >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div>
+    <button
+      type="submit"
+      disabled={isSubmitting}
+      className="w-full px-4 py-3 bg-gradient-to-r from-purple-400 to-pink-500 text-white font-bold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+    >
+      CONTINUE
+    </button>
+  </div>
+  <div>
+    <button
+      type="close"
+      onClick={onClose}
+      className="w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-200 text-white font-bold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+    >
+      CANCLE
+    </button>
+  </div>
+</div>
+
               </div>
             </Form>
           )}
