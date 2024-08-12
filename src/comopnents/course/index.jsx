@@ -26,7 +26,7 @@ const DynamicComponentApp = () => {
       <div className="text-center mt-4">
         {" "}
         <div className="text-center mt-10 lg:mt-20 lg:py-10">
-          <h1 className="text-5xl lg:text-6xl  font-semibold my-10 lg:mb-2">
+          <h1 className="text-4xl lg:text-6xl  font-semibold my-10 lg:mb-2 mx-2">
             Course Overview
           </h1>
         </div>

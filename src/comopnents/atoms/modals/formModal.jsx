@@ -40,7 +40,7 @@ const Modal = ({ isOpen, onClose }) => {
         </button>
 
         {/* Title */}
-        <h2 className="text-2xl text-black font-bold mb-4 text-left">Request a Callback <span role="img" aria-label="wave">👋</span></h2>
+        <h2 className="text-2xl text-black font-bold mb-4 text-left">Request a Callback <span role="img" aria-label="wave"></span></h2>
 
         <Formik
           initialValues={initialValues}
@@ -114,7 +114,7 @@ const Modal = ({ isOpen, onClose }) => {
     <button
       type="submit"
       disabled={isSubmitting}
-      className="w-full px-4 py-3 bg-gradient-to-r from-purple-400 to-pink-500 text-white font-bold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      className="w-full px-4 py-3 bg-green-600 text-white font-bold rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
     >
       CONTINUE
     </button>
@@ -123,9 +123,9 @@ const Modal = ({ isOpen, onClose }) => {
     <button
       type="close"
       onClick={onClose}
-      className="w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-200 text-white font-bold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      className="w-full px-4 py-3 bg-red-600 text-white font-bold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
     >
-      CANCLE
+      CANCEL
     </button>
   </div>
 </div>
