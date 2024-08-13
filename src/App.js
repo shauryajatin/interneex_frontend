@@ -10,6 +10,7 @@ import DynamicComponentApp from './comopnents/course';
 import Mentor from './comopnents/mentor';
 import Footer from './comopnents/footer';
 import TestimonialSection from './comopnents/testimonials';
+import AlumniCompanies from './comopnents/alumni';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
    {/* <Skills /> */}
    <WhyChoose id="services"/> 
    <TestimonialSection  id="testimonials"/>
+   <AlumniCompanies />
    <Pricing id="pricing" />
  
    <Footer />

@@ -56,7 +56,64 @@ const plans = [
   },
 ];
 
-const PricingCard = ({ plan }) => {
+
+const PricingCard = ({plan}) => {
+  const handlePayment = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: parseFloat(plan.price.replace('₹', '').replace(',', '')), // Convert price to number
+          currency: 'INR',
+          receipt: `receipt_order_${plan.name}`,
+          notes: {
+            plan_name: plan.name,
+            plan_duration: plan.duration,
+          },
+        }),
+      });
+
+      const order = await response.json();
+     const REACT_APP_RAZORPAY_KEY_ID="rzp_test_5r2RhPz25jD50y"
+
+      if (order.id) {
+        const options = {
+          key:REACT_APP_RAZORPAY_KEY_ID, // Replace with your key ID from Razorpay Dashboard
+          amount: order.amount,
+          currency: order.currency,
+          name: "Your Company Name",
+          description: `Purchase of ${plan.name} Plan`,
+          order_id: order.id,
+          handler: function (response) {
+            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+          },
+          prefill: {
+            name: "User Name",
+            email: "user@example.com",
+            contact: "9999999999",
+          },
+          notes: {
+            address: "Some Address",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+      } else {
+        alert('Failed to create order. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during payment', error);
+      alert('Error during payment. Please try again.');
+    }
+  };
+
   return (
     <div
       className={`max-w-sm rounded-xl overflow-hidden shadow-xl ${plan.backgroundColor} ${plan.textColor} p-6 m-4 text-center`}
@@ -64,19 +121,23 @@ const PricingCard = ({ plan }) => {
       <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
       <p className="text-xl font-bold mb-2">{plan.price}</p>
       <p className="text-sm mb-4">{plan.duration}</p>
-      <ul className=" ml-1 text-left space-y-2">
+      <ul className="ml-1 text-left space-y-2">
         {plan.features.map((feature, index) => (
           <li key={index} className="text-sm mb-1">
             ✅ {feature}
           </li>
         ))}
       </ul>
-      <button className="mb-4 bg-purple-100 text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4">
+      <button
+        onClick={handlePayment}
+        className="mb-4 bg-purple-100 text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4"
+      >
         Enrol Now
       </button>
     </div>
   );
 };
+
 
 const Pricing = () => {
   return (

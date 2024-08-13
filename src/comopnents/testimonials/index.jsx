@@ -35,11 +35,11 @@ const TestimonialSection = () => {
           </h1>
         </div>
       <div className="max-w-7xl mx-auto bg-purple-100 my-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-md min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] min-h-[300px] sm:min-h-[400px] lg:min-h-[200px] bg-purple-200"
+              className="bg-prple-200 p-8 rounded-lg shadow-md min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] min-h-[300px] sm:min-h-[400px] lg:min-h-[200px] bg-purple-200"
             //   style={{ minHeight: "250px" }} // Increased minimum height
             >
               <blockquote className="text-xl text-gray-700 mb-6">
