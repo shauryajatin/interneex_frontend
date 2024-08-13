@@ -26,7 +26,7 @@ const Modal = ({ isOpen, onClose }) => {
     try {
       const loadingToast = toast.loading('Sending email...');
 
-      const response = await fetch('http://localhost:3001/api/send', {
+      const response = await fetch('http://backend.interneex.com/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
