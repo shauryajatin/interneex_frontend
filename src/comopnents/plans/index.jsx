@@ -61,7 +61,7 @@ const plans = [
 const PricingCard = ({plan}) => {
   const handlePayment = async () => {
     try {
-      const response = await fetch('http://backend.interneex.com/api/create-order', {
+      const response = await fetch('https://backend.interneex.com/api/create-order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
