@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
+import interneexDoc from "../../../assets/pdf/interneex.pdf"
 
 const items = [
   {
@@ -134,25 +135,35 @@ const WebDev = () => {
           </div>
 
           <div className="bg-slate-900 md:w-2/3 lg:w-2/3 pt-4 overflow-auto mt-2 py-10 lg:mx-20 lg:rounded-xl">
-            <h2 className="text-3xl text-left pl-5 lg:ml-20 pt-3 font-bold mb-2 text-white">
-              {selectedItem.name}
-            </h2>
-            <ul
-              className=" pl-5 lg:ml-20 lg:mt-10 space-y-5 text-white pt-2"
-              style={{
-                maxHeight: "400px",
-                overflowY: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {selectedItem.features.map((feature, index) => (
-                <li key={index} className="text-lg mb-1 text-left">
-                  🎯 {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
+  <div className="flex justify-between items-center">
+    <h2 className="text-3xl text-left pl-5 lg:ml-20 pt-3 font-bold mb-2 text-white">
+      {selectedItem.name}
+    </h2>
+    <a
+      href={interneexDoc}
+      download
+      className="mr-5 lg:mr-20 bg-slate-800 hover:bg-slate-950 text-white font-bold py-2 px-4 rounded"
+    >
+      Download Brochure
+    </a>
+  </div>
+  <ul
+    className="pl-5 lg:ml-20 lg:mt-10 space-y-5 text-white pt-2"
+    style={{
+      maxHeight: "400px",
+      overflowY: "auto",
+      scrollbarWidth: "none",
+      msOverflowStyle: "none",
+    }}
+  >
+    {selectedItem.features.map((feature, index) => (
+      <li key={index} className="text-lg mb-1 text-left">
+        🎯 {feature}
+      </li>
+    ))}
+  </ul>
+</div>
+
         </div>
       </div>
     </div>

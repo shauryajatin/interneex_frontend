@@ -135,13 +135,13 @@ const Mentor = () => {
           {/* Left and Right Navigation Buttons */}
           <button
             onClick={() => scroll("left")}
-            className="absolute top-1/2 transform -translate-y-1/2 -left-0 p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white"
+            className="absolute top-1/2 transform -translate-y-1/2 -left-0 ml-4 lg:ml-2 p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white"
           >
             <FaChevronLeft className="h-6 w-5" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute top-1/2 transform -translate-y-1/2 -right-0 p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white"
+            className="absolute top-1/2 transform -translate-y-1/2 -right-0 mr-4 p-2 lg:mr-2  bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white"
           >
             <FaChevronRight className="h-6 w-5" />
           </button>
