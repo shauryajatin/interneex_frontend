@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './index.css'
 const companies = [
   { name: 'Amazon', imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
   { name: 'Google', imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
@@ -19,13 +19,21 @@ const AlumniCompanies = () => {
         Our Alumni work at some of the <br /> 
         <span className="text-2xl lg:text-4xl font-semibold pt-4 lg:pt-1">best companies in the world</span>
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 py-14">
-        {companies.map((company, index) => (
-          <div key={index} className="flex justify-center items-center p-2 lg:py-4">
-            <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-8 md:h-12 lg:h-12" />
-          </div>
-        ))}
+      <div className="relative overflow-hidden">
+  <div className="flex animate-marquee whitespace-nowrap">
+    {companies.map((company, index) => (
+      <div key={index} className="flex-shrink-0 flex justify-center items-center p-2 lg:py-4 lg:px-8">
+        <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-8 md:h-12 lg:h-12" />
       </div>
+    ))}
+    {companies.map((company, index) => (
+      <div key={`duplicate-${index}`} className="flex-shrink-0 flex justify-center items-center p-2 lg:py-4 sm:px-8 lg:px-8">
+        <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-8 md:h-12 lg:h-12" />
+      </div>
+    ))}
+  </div>
+</div>
+
     </div>
   );
 };
