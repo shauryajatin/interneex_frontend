@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./index.css";
 import interneexDoc from "../../../assets/pdf/interneex.pdf"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 const items = [
   {
@@ -119,18 +121,17 @@ const WebDev = () => {
         <div className="flex flex-col  md:flex-row lg:flex-row overflow-hidden">
           <div className="flex md:flex-col lg:flex-col md:w-1/3 lg:w-1/3 lg:ml-4 overflow-x-auto md:overflow-visible lg:overflow-visible scrollbar-hide">
             {items.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedItem(item)}
-                className={`cursor-pointer mx-2 p-2 mb-3 lg:mb-0 mt-4 ${
-                  selectedItem.name === item.name ? "bg-slate-900" : "bg-purple-100"
-                } 
-           ${
-             selectedItem.name === item.name ? "text-white" : "text-black"
-           } flex-shrink-0`}
-              >
-                <h2 className="font-bold my-3">{item.name}</h2>
-              </div>
+            <div
+            key={index}
+            onClick={() => setSelectedItem(item)}
+            className={`cursor-pointer mx-2 p-2 mb-3 lg:mb-0 mt-4 
+              ${selectedItem.name === item.name ? "lg:bg-slate-900 lg:text-white" : "bg-purple-100 text-black"} 
+              ${selectedItem.name === item.name ? "border-b-4 border-slate-900 lg:border-none" : "border-none"} 
+              flex-shrink-0`}
+          >
+            <h2 className="font-bold my-3">{item.name}</h2>
+          </div>
+          
             ))}
           </div>
 
@@ -140,12 +141,14 @@ const WebDev = () => {
       {selectedItem.name}
     </h2>
     <a
-      href={interneexDoc}
-      download
-      className="mr-5 lg:mr-20 bg-slate-800 hover:bg-slate-950 text-white font-bold py-2 px-4 rounded"
-    >
-      Download Brochure
-    </a>
+  href={interneexDoc}
+  download
+  className="mr-5 lg:mr-20 bg-slate-800 hover:bg-slate-950 text-white font-bold py-2 px-4 rounded inline-flex items-center"
+>
+  <FontAwesomeIcon icon={faDownload} className="mr-2" />
+  Download Brochure
+</a>
+
   </div>
   <ul
     className="pl-5 lg:ml-20 lg:mt-10 space-y-5 text-white pt-2"

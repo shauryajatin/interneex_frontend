@@ -22,13 +22,13 @@ const AlumniCompanies = () => {
       <div className="relative overflow-hidden">
   <div className="flex animate-marquee whitespace-nowrap mt-10">
     {companies.map((company, index) => (
-      <div key={index} className="flex-shrink-0 flex justify-center items-center p-2 lg:py-4 lg:px-8">
-        <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-8 md:h-12 lg:h-12" />
+      <div key={index} className="flex-shrink-0 flex justify-center items-center p-2 lg:py-4 sm:px-8 lg:px-8">
+        <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-10 md:h-12 lg:h-12 px-10 lg:px-1" />
       </div>
     ))}
     {companies.map((company, index) => (
       <div key={`duplicate-${index}`} className="flex-shrink-0 flex justify-center items-center p-2 lg:py-4 sm:px-8 lg:px-8">
-        <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-8 md:h-12 lg:h-12" />
+        <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-10 md:h-12 lg:h-12 px-10" />
       </div>
     ))}
   </div>
