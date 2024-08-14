@@ -28,7 +28,7 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <div className="pt-2 pb-12 px-6 lg:px-8 bg-slate-900" id="testimonials">
+    <div className="pt-2 pb-12 px-6 lg:px-8 bg-slate-900 py-10" id="testimonials">
          <div className="text-center mt-10 lg:mt-30">
           <h1 className="text-5xl md:text-5xl lg:text-6xl font-semibold text-white my-8 lg:mb-4">
             Testimonials
@@ -39,7 +39,7 @@ const TestimonialSection = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-prple-200 p-8 rounded-lg shadow-md min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] min-h-[300px] sm:min-h-[400px] lg:min-h-[200px] bg-purple-200"
+              className=" transition-transform transform hover:scale-105 hover:shadow-lg duration-200 ease-in-out bg-prple-200 p-8 rounded-lg shadow-md min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] min-h-[300px] sm:min-h-[400px] lg:min-h-[200px] bg-purple-200"
             //   style={{ minHeight: "250px" }} // Increased minimum height
             >
               <blockquote className="text-xl text-gray-700 mb-6">

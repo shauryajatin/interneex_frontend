@@ -2,7 +2,9 @@ import React, { useState } from "react";
 // import FullStackComponent from './components/FullStackComponent';  // Import your pre-built components
 import ML from "./ML/index";
 import WebDev from "./web-dev/index";
+
 // import './index.css';
+import '../../App.css'
 
 // Define a mapping from dropdown values to components
 const componentMap = {
@@ -23,12 +25,13 @@ const DynamicComponentApp = () => {
 
   return (
     <div>
-      <div className="text-center mt-4">
+      <div className="text-center mt-4" id="courses">
         {" "}
         <div className="text-center mt-10 lg:mt-20 lg:py-10">
-          <h1 className="text-4xl lg:text-6xl  font-semibold my-10 lg:mb-2 mx-2">
-            Course Overview
-          </h1>
+        <h1 className="text-4xl lg:text-6xl font-semibold my-10 lg:mb-2 mx-2 relative">
+  Cours<span className="underline-span">e  O</span>verview
+</h1>
+
         </div>
         <div className="flex justify-start items-center pl-2 lg:pl-6">
           <div className="relative">

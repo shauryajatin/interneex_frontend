@@ -14,7 +14,7 @@ const companies = [
 ]
 const AlumniCompanies = () => {
   return (
-    <div className="text-center  py-12 lg:py-20 px-4 mb-16">
+    <div className="text-center  py-12 lg:py-20 px-4 mb-16" id="alumni" >
       <h2 className="text-4xl lg:text-6xl font-semibold mb-8">
         Our Alumni work at some of the <br /> 
         <span className="text-2xl lg:text-4xl font-semibold pt-4 lg:pt-1">best companies in the world</span>

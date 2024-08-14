@@ -1,6 +1,7 @@
 import React from "react";
 import API_BASE_URL from "../../utils/constants";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const plans = [
   {
     name: "EXPERT",
@@ -62,13 +63,15 @@ const plans = [
 const PricingCard = ({plan}) => {
   const handlePayment = async () => {
     try {
+      const amountInPaise = parseFloat(plan.price.replace('₹', '').replace(/,/g, '')) ; // Convert price to paise
+  
       const response = await fetch(`${API_BASE_URL}/create-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: parseFloat(plan.price.replace('₹', '').replace(',', '')), // Convert price to number
+          amount: amountInPaise,
           currency: 'INR',
           receipt: `receipt_order_${plan.name}`,
           notes: {
@@ -77,26 +80,29 @@ const PricingCard = ({plan}) => {
           },
         }),
       });
-
+  
+      if (!response.ok) {
+        console.error('Failed to create order. Response status:', response.status);
+        alert('Failed to create order. Please try again.');
+        return;
+      }
+  
       const order = await response.json();
-     const REACT_APP_RAZORPAY_KEY_ID="rzp_test_5r2RhPz25jD50y"
-
+  
+      const razorpayKeyId = process.env.REACT_APP_RAZORPAY_KEY_ID;
+  
       if (order.id) {
         const options = {
-          key:REACT_APP_RAZORPAY_KEY_ID, // Replace with your key ID from Razorpay Dashboard
+          key: razorpayKeyId, // Use the key from the environment variable
           amount: order.amount,
           currency: order.currency,
-          name: "Your Company Name",
+          name: "Interneex",
           description: `Purchase of ${plan.name} Plan`,
           order_id: order.id,
           handler: function (response) {
-            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+            toast.success("Payment successful! Payment ID: " + response.razorpay_payment_id);
           },
-          prefill: {
-            name: "User Name",
-            email: "user@example.com",
-            contact: "9999999999",
-          },
+          // Removing the prefill object allows Razorpay to prompt the user for their details
           notes: {
             address: "Some Address",
           },
@@ -104,35 +110,37 @@ const PricingCard = ({plan}) => {
             color: "#3399cc",
           },
         };
-
+  
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
+        console.error('Order ID not returned in response:', order);
         alert('Failed to create order. Please try again.');
       }
     } catch (error) {
-      console.error('Error during payment', error);
+      console.error('Error during payment:', error);
       alert('Error during payment. Please try again.');
     }
   };
+  
 
   return (
     <div
-      className={`max-w-sm rounded-xl overflow-hidden shadow-xl ${plan.backgroundColor} ${plan.textColor} p-6 m-4 text-center`}
+      className={`max-w-sm rounded-xl overflow-hidden shadow-xl ${plan.backgroundColor} ${plan.textColor} p-6 m-4 text-center transition-transform transform hover:scale-105 hover:shadow-lg duration-200 ease-in-out`}
     >
       <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
       <p className="text-xl font-bold mb-2">{plan.price}</p>
       <p className="text-sm mb-4">{plan.duration}</p>
       <ul className="ml-1 text-left space-y-2">
         {plan.features.map((feature, index) => (
-          <li key={index} className="text-sm mb-1">
+          <li key={index} className="text-sm mb-1 ">
             ✅ {feature}
           </li>
         ))}
       </ul>
       <button
         onClick={handlePayment}
-        className="mb-4 bg-purple-100 text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4"
+        className="transition-transform transform hover:scale-105 hover:shadow-lg duration-200 ease-in-out mb-4 bg-purple-100 text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4"
       >
         Enrol Now
       </button>
@@ -143,7 +151,7 @@ const PricingCard = ({plan}) => {
 
 const Pricing = () => {
   return (
-    <div className="bg-slate-900 py-10 " id="pricing">
+    <div className="bg-slate-900 py-10 lg:my-20 " id="pricing">
       <div className="bg-slate-900 text-white py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-center uppercase">
@@ -155,11 +163,22 @@ const Pricing = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center ">
         {plans.map((plan, index) => (
-          <PricingCard key={index} plan={plan} />
+          <PricingCard key={index} plan={plan} className="" />
         ))}
       </div>
+      <ToastContainer
+  position="top-right"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>
     </div>
   );
 };

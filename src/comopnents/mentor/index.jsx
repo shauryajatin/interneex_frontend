@@ -90,8 +90,8 @@ const Mentor = () => {
     <div className="relative w-full lg:my-16 mt-4 lg:mt-20" id="about">
       <div className="grid grid-cols-1 lg:grid-cols-4 sm:mt-2 mt-6 mb-6">
         <div className="col-span-4 sm:pl-6 lg:col-span-1 lg:pl-10 lg:pr-4">
-          <h2 className="text-3xl lg:text-5xl font-bold sm:mb-2 lg:mb-1 lg:mt-2 text-justify px-4 lg:px-0">
-            <span>Meet Our</span> <br /> Mentors
+          <h2 className="text-4xl lg:text-6xl font-bold sm:mb-2 lg:mb-1 lg:mt-2 text-justify py-6 px-4 lg:px-0">
+            <span>Mee<span className="">t O</span>ur</span> <br /><span className="mt-4 lg:mt-4">Mentors</span>
           </h2>
           <p className="mb-6 py-3 lg:pt-10 text-lg sm:text-base lg:text-lg text-justify px-4 lg:px-0">
             Our mentors bring years of experience across various industries.
@@ -110,7 +110,7 @@ const Mentor = () => {
             {mentors.map((mentor, index) => (
               <div
                 key={index}
-                className="min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] min-h-[300px] sm:min-h-[400px] lg:min-h-[400px] bg-purple-200 rounded-lg shadow-lg p-4"
+                className= " transition-transform transform hover:scale-105 hover:shadow-lg duration-200 ease-in-out min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] min-h-[300px] sm:min-h-[400px] lg:min-h-[400px] bg-purple-200 rounded-lg shadow-lg p-4"
               >
                 {mentor.img ? (
                   <img

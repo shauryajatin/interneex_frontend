@@ -52,8 +52,8 @@ const WhyChoose = () => {
   return (
     <div className="bg-purple-100 py-14 lg:py-20" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
-        <h2 className="text-4xl lg:text-6xl font-semibold text-center mb-12">
-          Why Choose Interneex ?
+        <h2 className="text-5xl lg:text-6xl font-semibold text-center mb-12">
+          Wh<span className="underline">y C</span>hoos<span className="underline">e I</span>nterneex ?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-4 lg:pt-10 lg:pb-10">
           {services.map((service) => (

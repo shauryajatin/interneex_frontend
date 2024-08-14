@@ -19,12 +19,12 @@ function App() {
    <HeroSection />
    {/* <PlacementStats /> */}
    <Mentor id="about" />
-   <DynamicComponentApp />
+   <DynamicComponentApp id="courses" />
    <Pricing id="pricing" />
    {/* <Skills /> */}
    <WhyChoose id="services"/> 
    <TestimonialSection  id="testimonials"/>
-   <AlumniCompanies />
+   <AlumniCompanies id="alumni" />
 
  
    <Footer />
