@@ -14,13 +14,13 @@ const companies = [
 ]
 const AlumniCompanies = () => {
   return (
-    <div className="text-center  py-4 lg:py-10 px-4 mb-16">
+    <div className="text-center  py-12 lg:py-20 px-4 mb-16">
       <h2 className="text-4xl lg:text-6xl font-semibold mb-8">
         Our Alumni work at some of the <br /> 
         <span className="text-2xl lg:text-4xl font-semibold pt-4 lg:pt-1">best companies in the world</span>
       </h2>
       <div className="relative overflow-hidden">
-  <div className="flex animate-marquee whitespace-nowrap">
+  <div className="flex animate-marquee whitespace-nowrap mt-10">
     {companies.map((company, index) => (
       <div key={index} className="flex-shrink-0 flex justify-center items-center p-2 lg:py-4 lg:px-8">
         <img src={company.imgSrc} alt={company.name} className="max-w-full h-10 sm:h-8 md:h-12 lg:h-12" />

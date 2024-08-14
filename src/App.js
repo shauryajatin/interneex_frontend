@@ -20,11 +20,12 @@ function App() {
    {/* <PlacementStats /> */}
    <Mentor id="about" />
    <DynamicComponentApp />
+   <Pricing id="pricing" />
    {/* <Skills /> */}
    <WhyChoose id="services"/> 
    <TestimonialSection  id="testimonials"/>
    <AlumniCompanies />
-   <Pricing id="pricing" />
+
  
    <Footer />
 

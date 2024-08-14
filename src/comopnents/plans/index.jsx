@@ -1,4 +1,5 @@
 import React from "react";
+import API_BASE_URL from "../../utils/constants";
 
 const plans = [
   {
@@ -61,7 +62,7 @@ const plans = [
 const PricingCard = ({plan}) => {
   const handlePayment = async () => {
     try {
-      const response = await fetch('https://backend.interneex.com/api/create-order', {
+      const response = await fetch(`${API_BASE_URL}/create-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

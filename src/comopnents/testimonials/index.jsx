@@ -28,13 +28,13 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <div className="pt-2 pb-12 px-6 lg:px-8 bg-purple-100" id="testimonials">
+    <div className="pt-2 pb-12 px-6 lg:px-8 bg-slate-900" id="testimonials">
          <div className="text-center mt-10 lg:mt-30">
-          <h1 className="text-5xl md:text-5xl lg:text-6xl font-semibold my-8 lg:mb-4">
+          <h1 className="text-5xl md:text-5xl lg:text-6xl font-semibold text-white my-8 lg:mb-4">
             Testimonials
           </h1>
         </div>
-      <div className="max-w-7xl mx-auto bg-purple-100 my-20">
+      <div className="max-w-7xl mx-auto bg-slate-900 my-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {testimonials.map((testimonial, index) => (
             <div
