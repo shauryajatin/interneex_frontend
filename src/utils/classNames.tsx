@@ -12,7 +12,7 @@
 		// If Object.getPrototypeOf supported, use it
 		if (typeof Object.getPrototypeOf == 'function') {
 			var proto = Object.getPrototypeOf(obj);
-			return proto === Object.prototype || proto === null;
+			return proto === Object.prototype || proto === null  ;
 		}
 
 		// Otherwise, use internal class
