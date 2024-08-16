@@ -21,7 +21,7 @@ function App() {
    <Mentor id="about" />
    <DynamicComponentApp id="courses" />
    <Pricing id="pricing" />
-   {/* <Skills /> */}
+   <Skills />
    <WhyChoose id="services"/> 
    <TestimonialSection  id="testimonials"/>
    <AlumniCompanies id="alumni" />
