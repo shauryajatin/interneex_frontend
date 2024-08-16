@@ -1,71 +1,139 @@
 import React, { useState } from "react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
+import { useScroll } from "../../context/scrollContext"; // Import useScroll
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ openModal, homeIcon }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { scrollToSection } = useScroll(); // Use the scroll function
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
-    <nav className="bg-slate-950 text-white flex items-center justify-between px-4 py-2">
-      {/* Logo */}
-      <div className="flex items-center space-x-2">
-        <h1 className="text-red-500 font-bold text-lg">Interneex</h1>
+    <nav className="top-0 w-full py-4 px-6 flex justify-between items-center bg-slate-900">
+      <div className="text-2xl font-bold text-white">Interneex</div>
+
+      <div className="navbar-items hidden lg:block flex space-x-6">
+        {homeIcon ? (
+          <Link to="/" className="text-white text-xl font-bold">
+            Home
+          </Link>
+        ) : (
+          <>
+            <a
+              href="#about"
+              className="hover:text-gray-400"
+              onClick={() => scrollToSection("about")}
+            >
+              About
+            </a>
+            <a
+              href="#services"
+              className="hover:text-gray-400"
+              onClick={() => scrollToSection("services")}
+            >
+              Services
+            </a>
+            <a
+              href="#pricing"
+              className="hover:text-gray-400"
+              onClick={() => scrollToSection("pricing")}
+            >
+              Pricing
+            </a>
+            <a
+              href="#testimonials"
+              className="hover:text-gray-400"
+              onClick={() => scrollToSection("testimonials")}
+            >
+              Testimonials
+            </a>
+           
+          </>
+        )}
       </div>
 
-      {/* Navigation Links */}
-      <div className="hidden md:flex items-center space-x-4">
-        <button className="bg-red-500 text-white px-3 py-1 rounded">
-          Courses
-        </button>
-        <a href="#" className="hover:text-gray-300">
-          Practice
-        </a>
-        <a href="#" className="text-green-500 hover:text-green-300">
-          Jobs
-        </a>
-        <a href="#" className="text-blue-500 hover:text-blue-300">
-          Events
-        </a>
-        <a href="#" className="hover:text-gray-300">
-          Placements
-        </a>
-        <a href="#" className="hover:text-gray-300">
-          Hire From Us
-        </a>
-        <a href="#" className="text-yellow-500 hover:text-yellow-300">
-          Refer & Earn
-        </a>
-        <a href="#" className="hover:text-gray-300">
-          About Us
+      <div className="flex items-center space-x-4">
+        <a
+          href="#talk"
+          className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+          onClick={() => {
+            openModal();
+            scrollToSection("talk");
+          }}
+        >
+          Talk to Us
         </a>
       </div>
 
-      {/* Mobile Menu Icon */}
-      <div className="md:hidden">
-        <button onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? (
-            <XIcon className="h-6 w-6 text-white" />
-          ) : (
-            <MenuIcon className="h-6 w-6 text-white" />
-          )}
-        </button>
-      </div>
+      {!homeIcon && (
+        <>
+          <div
+            className={`hamburger lg:hidden ${menuOpen ? "active" : ""}`}
+            onClick={toggleMenu}
+          >
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`${
-          isOpen ? "flex" : "hidden"
-        } flex-col md:hidden items-start space-y-1 py-2 absolute top-16 left-0 w-full bg-black px-4`}
-      >
-        <button className="bg-red-500 text-white px-3 py-1 rounded w-full text-left">
-          Courses
-        </button>
-        {/* Other links here following the same pattern */}
-      </div>
-
-      {/* Sign-In Button */}
-      <button className="bg-green-500 text-black px-3 py-1 rounded hidden md:block">
-        SIGN IN
-      </button>
+          <div className={`navbar-menu ${menuOpen ? "active" : ""}`}>
+            <a
+              href="#about"
+              className="hover:text-gray-400"
+              onClick={() => {
+                scrollToSection("about");
+                toggleMenu();
+              }}
+            >
+              About
+            </a>
+            <a
+              href="#services"
+              className="hover:text-gray-400"
+              onClick={() => {
+                scrollToSection("services");
+                toggleMenu();
+              }}
+            >
+              Services
+            </a>
+            <a
+              href="#pricing"
+              className="hover:text-gray-400"
+              onClick={() => {
+                scrollToSection("pricing");
+              }}
+            >
+              Pricing
+            </a>
+            <a
+              href="#testimonials"
+              className="hover:text-gray-400"
+              onClick={() => {
+                scrollToSection("testimonials");
+              }}
+            >
+              Testimonials
+            </a>
+            <Link to="/batches-and-webinar"
+             className="hover:text-gray-400"
+            >Batches and Webinar</Link>
+            <a
+              href="#talk"
+              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+              onClick={() => {
+                openModal();
+                scrollToSection("talk");
+                toggleMenu();
+              }}
+            >
+              Talk to Us
+            </a>
+          </div>
+        </>
+      )}
     </nav>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFacebook, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -105,6 +106,15 @@ const Footer = () => {
           <span className="text-lg text-gray-400 text-center">
             © 2024 Interneex. All rights reserved.
           </span>
+          <Link to="/T&C" className="text-lg text-gray-400 text-center">
+             Terms and Conditions 
+            </Link>
+            <Link to="/Privacy" className="text-lg text-gray-400 text-center">
+             Privacy Policy
+            </Link>
+            <Link to="/Refund-Policy" className="text-lg text-gray-400 text-center">
+             Refund Policy
+            </Link>
         </div>
       </div>
     </footer>

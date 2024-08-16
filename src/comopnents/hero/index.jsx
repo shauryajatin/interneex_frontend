@@ -4,6 +4,7 @@ import grid from "../../assets/images1/grid.png";
 import background from "../../assets/images1/hero.svg";
 import Modal from "../atoms/modals/formModal"; // Import the Modal component
 import { useScroll } from "../../context/scrollContext"; // Import useScroll
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -68,6 +69,9 @@ const HeroSection = () => {
           >
            Testimonials
           </a>
+          <Link to="/batches-and-webinar" className="hover:text-gray-400">
+              Batches and Webinar
+            </Link>
         </div>
         <div className="flex hidden lg:block space-x-4 items-center">
           <a
@@ -129,6 +133,9 @@ const HeroSection = () => {
           >
             Testimonals
           </a>
+          <Link to="/batches-and-webinar" className="hover:text-gray-400">
+              Batches and Webinar
+            </Link>
           <a
             href="#talk"
             className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"

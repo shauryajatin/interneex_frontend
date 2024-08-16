@@ -1,35 +1,43 @@
-
 import './App.css';
-// import Navbar from './comopnents/navbar';
-import HeroSection from './comopnents/hero';
-import PlacementStats from './comopnents/placement';
-import Skills from './comopnents/skills';
-import WhyChoose from './comopnents/services';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HeroSection from "./comopnents/hero"
+import MentorSection from "./comopnents/mentor"
+import DynamicComponentApp from "./comopnents/course"
 import Pricing from './comopnents/plans';
-import DynamicComponentApp from './comopnents/course';
-import Mentor from './comopnents/mentor';
-import Footer from './comopnents/footer';
+import WhyChoose from './comopnents/services';
 import TestimonialSection from './comopnents/testimonials';
-import AlumniCompanies from './comopnents/alumni';
+import AlumniCompanies from './comopnents/alumni'
+import Footer from './comopnents/footer';
+import Mentor from './comopnents/mentor';
+import Bulletin from './pages/bulletin';
+import PrivacyPolicy from './pages/Privacy';
+import TermsAndConditions from './pages/T&C';
+import CancellationRefundPolicy from './pages/Refund';
 
 function App() {
   return (
-    <div className="App">
-   {/* <Navbar /> */}
-   <HeroSection />
-   {/* <PlacementStats /> */}
-   <Mentor id="about" />
-   <DynamicComponentApp id="courses" />
-   <Pricing id="pricing" />
-   <Skills />
-   <WhyChoose id="services"/> 
-   <TestimonialSection  id="testimonials"/>
-   <AlumniCompanies id="alumni" />
-
- 
-   <Footer />
-
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={
+            <>
+              <HeroSection />
+              <Mentor id="about" />
+              <DynamicComponentApp id="courses" />
+              <Pricing id="pricing" />
+              <WhyChoose id="services" />
+              <TestimonialSection id="testimonials" />
+              <AlumniCompanies id="alumni" />
+              <Footer />
+            </>
+          } />
+          <Route path="/batches-and-webinar" element={<Bulletin />} />
+          <Route path="/Privacy" element={< PrivacyPolicy/>} />
+          <Route path="/T&C" element={< TermsAndConditions/>} />
+          <Route path="/Refund-Policy" element={< CancellationRefundPolicy/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
