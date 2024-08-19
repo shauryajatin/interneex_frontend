@@ -13,31 +13,35 @@ import Bulletin from './pages/bulletin';
 import PrivacyPolicy from './pages/Privacy';
 import TermsAndConditions from './pages/T&C';
 import CancellationRefundPolicy from './pages/Refund';
+// import AuthWrapper from './context/authContext';
+import { AuthProvider } from './context/authContext'; // Import the AuthProvider
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={
-            <>
-              <HeroSection />
-              <Mentor id="about" />
-              <DynamicComponentApp id="courses" />
-              <Pricing id="pricing" />
-              <WhyChoose id="services" />
-              <TestimonialSection id="testimonials" />
-              <AlumniCompanies id="alumni" />
-              <Footer />
-            </>
-          } />
-          <Route path="/batches-and-webinar" element={<Bulletin />} />
-          <Route path="/Privacy" element={< PrivacyPolicy/>} />
-          <Route path="/T&C" element={< TermsAndConditions/>} />
-          <Route path="/Refund-Policy" element={< CancellationRefundPolicy/>} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <HeroSection />
+                <MentorSection id="about" />
+                <DynamicComponentApp id="courses" />
+                <Pricing id="pricing" />
+                <WhyChoose id="services" />
+                <TestimonialSection id="testimonials" />
+                <AlumniCompanies id="alumni" />
+                <Footer />
+              </>
+            } />
+            <Route path="/batches-and-webinar" element={<Bulletin />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

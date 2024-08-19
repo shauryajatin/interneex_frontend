@@ -2,25 +2,46 @@ import React, { useState } from "react";
 import "./index.css"; // Import custom CSS for additional styles
 import grid from "../../assets/images1/grid.png";
 import background from "../../assets/images1/hero.svg";
-import Modal from "../atoms/modals/formModal"; // Import the Modal component
+import Modal from "../atoms/modals/formModal"; // Existing Modal for "Talk to Us"
+import AuthModal from "../atoms/modals/authModal"; // New AuthModal for Login/Signup
 import { useScroll } from "../../context/scrollContext"; // Import useScroll
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/authContext"; // Assuming you have an AuthContext
 
 const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTalkModalOpen, setIsTalkModalOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { scrollToSection } = useScroll(); // Use the scroll function
+  const { login, signup } = useAuth(); // Use login and signup from AuthContext
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openTalkModal = () => {
+    setIsTalkModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeTalkModal = () => {
+    setIsTalkModalOpen(false);
+  };
+
+  const openAuthModal = () => {
+    setIsAuthModalOpen(true);
+  };
+
+  const closeAuthModal = () => {
+    setIsAuthModalOpen(false);
+  };
+
+  const handleAuthSubmit = async (mode, data) => {
+    if (mode === 'login') {
+      await login(data.email, data.password);
+    } else {
+      await signup(data.name, data.email, data.number, data.password);
+    }
+    closeAuthModal();
   };
 
   return (
@@ -78,12 +99,18 @@ const HeroSection = () => {
             href="#talk"
             className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
             onClick={() => {
-              openModal();
+              openTalkModal();
               scrollToSection("talk");
             }}
           >
             Talk to Us
           </a>
+          <button
+            onClick={openAuthModal}
+            className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+          >
+            Login/Signup
+          </button>
         </div>
         <div
           className={`hamburger lg:hidden ${menuOpen ? "active" : ""}`}
@@ -140,13 +167,19 @@ const HeroSection = () => {
             href="#talk"
             className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
             onClick={() => {
-              openModal();
+              openTalkModal();
               scrollToSection("talk");
               toggleMenu();
             }}
           >
             Talk to Us
           </a>
+          <button
+            onClick={openAuthModal}
+            className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+          >
+            Login/Signup
+          </button>
         </div>
       </nav>
       <div className="container mx-auto flex flex-col lg:flex-row items-start justify-center px-6 py-12 relative z-10 mt-5 lg:mt-0 pt-10 lg:mb-20">
@@ -187,7 +220,7 @@ const HeroSection = () => {
                   href="#get-started"
                   className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-6 py-3 rounded-full inline-flex items-center"
                   onClick={() => {
-                    openModal();
+                    openTalkModal();
                     scrollToSection("talk");
                   }}
                 >
@@ -216,7 +249,8 @@ const HeroSection = () => {
           d="M0,256L48,245.3C96,235,192,213,288,218.7C384,224,480,256,576,272C672,288,768,288,864,250.7C960,213,1056,139,1152,101.3C1248,64,1344,64,1392,64L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
       </svg>
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
+      <Modal isOpen={isTalkModalOpen} onClose={closeTalkModal} />
+      <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} onSubmit={handleAuthSubmit} />
     </section>
   );
 };
