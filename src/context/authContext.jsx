@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3001/api/login', { email, password });
+      const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
       const { token, user: userData } = response.data;
 
       // Save user to localStorage
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (name, email, number, password) => {
     try {
-      await axios.post('http://localhost:3001/api/register', { name, email, number, password });
+      await axios.post(`${API_BASE_URL}/register`, { name, email, number, password });
       // After successful registration, log in the user
       await login(email, password);
     } catch (error) {

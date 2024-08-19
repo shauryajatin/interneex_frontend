@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css"; // Import custom CSS for additional styles
 import grid from "../../assets/images1/grid.png";
 import background from "../../assets/images1/hero.svg";
@@ -6,14 +6,25 @@ import Modal from "../atoms/modals/formModal"; // Existing Modal for "Talk to Us
 import AuthModal from "../atoms/modals/authModal"; // New AuthModal for Login/Signup
 import { useScroll } from "../../context/scrollContext"; // Import useScroll
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/authContext"; // Assuming you have an AuthContext
+import axios from 'axios';
+import { toast, ToastContainer } from "react-toastify";
+import API_BASE_URL from "../../utils/constants";
 
 const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isTalkModalOpen, setIsTalkModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { scrollToSection } = useScroll(); // Use the scroll function
-  const { login, signup } = useAuth(); // Use login and signup from AuthContext
+
+  useEffect(() => {
+    // Check if there's a token in localStorage when the component mounts
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -36,12 +47,52 @@ const HeroSection = () => {
   };
 
   const handleAuthSubmit = async (mode, data) => {
-    if (mode === 'login') {
-      await login(data.email, data.password);
-    } else {
-      await signup(data.name, data.email, data.number, data.password);
+    try {
+      const url = mode === 'login' ? `${API_BASE_URL}/login` : `${API_BASE_URL}/register`;
+      const response = await axios.post(url, data);
+  
+      // Check if the response status is 200 (OK) and if there's a token
+      if (response.status === 200 && response.data.token) {
+        const token = response.data.token;
+        
+        // Store the token in localStorage
+        localStorage.setItem('token', token);
+  
+        // Set the Authorization header for future requests
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  
+        // Set the authenticated state to true
+        setIsAuthenticated(true);
+  
+        // Close the auth modal
+        closeAuthModal();
+  
+        // Show success toast notification only on login
+        if (mode === 'login') {
+          toast.success('Successfully logged in!');
+        }
+      } else {
+        // Handle the case where the response is not as expected
+        throw new Error('Invalid login credentials');
+      }
+    } catch (error) {
+      // If the server returns a response with an error message
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(`Authentication failed: ${error.response.data.message}`);
+      } else {
+        // Generic error message if something else went wrong
+        toast.error('Authentication failed. Please try again.');
+      }
     }
-    closeAuthModal();
+  };
+
+  const handleLogout = () => {
+    // Remove the token from localStorage and axios headers
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+
+    // Set the authenticated state to false
+    setIsAuthenticated(false);
   };
 
   return (
@@ -105,12 +156,21 @@ const HeroSection = () => {
           >
             Talk to Us
           </a>
-          <button
-            onClick={openAuthModal}
-            className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
-          >
-            Login/Signup
-          </button>
+          {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={openAuthModal}
+              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+            >
+              Login/Signup
+            </button>
+          )}
         </div>
         <div
           className={`hamburger lg:hidden ${menuOpen ? "active" : ""}`}
@@ -174,12 +234,21 @@ const HeroSection = () => {
           >
             Talk to Us
           </a>
-          <button
-            onClick={openAuthModal}
-            className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
-          >
-            Login/Signup
-          </button>
+          {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={openAuthModal}
+              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+            >
+              Login/Signup
+            </button>
+          )}
         </div>
       </nav>
       <div className="container mx-auto flex flex-col lg:flex-row items-start justify-center px-6 py-12 relative z-10 mt-5 lg:mt-0 pt-10 lg:mb-20">

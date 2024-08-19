@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 const AuthModal = ({ isOpen, onClose, onSubmit }) => {
   const [authMode, setAuthMode] = useState('login'); // Track login/signup mode
@@ -22,6 +23,11 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = (values) => {
     onSubmit(authMode, values);
+    if (authMode === 'login') {
+      toast.success('Successfully logged in!');
+    } else {
+      toast.success('Successfully signed up!');
+    }
   };
 
   if (!isOpen) return null;
@@ -111,3 +117,5 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
 };
 
 export default AuthModal;
+3
+

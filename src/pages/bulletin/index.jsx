@@ -155,7 +155,7 @@ const Bulletin = () => {
         </section>
 
         {/* Bulletins Section */}
-        <section className="py-20">
+        {/* <section className="py-20">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-5xl font-bold mb-6 text-slate-900 py-5">Latest Bulletins</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -168,7 +168,7 @@ const Bulletin = () => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
        
       </main>
       <Pricing />
