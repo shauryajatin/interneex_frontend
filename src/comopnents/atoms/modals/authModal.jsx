@@ -117,5 +117,5 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
 };
 
 export default AuthModal;
-3
+
 
