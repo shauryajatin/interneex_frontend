@@ -23,11 +23,11 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = (values) => {
     onSubmit(authMode, values);
-    if (authMode === 'login') {
-      toast.success('Successfully logged in!');
-    } else {
-      toast.success('Successfully signed up!');
-    }
+    // if (authMode === 'login') {
+    //   toast.success('Successfully logged in!');
+    // } else {
+    //   toast.success('Successfully signed up!');
+    // }
   };
 
   if (!isOpen) return null;

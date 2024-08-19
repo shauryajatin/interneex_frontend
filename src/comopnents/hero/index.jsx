@@ -51,29 +51,33 @@ const HeroSection = () => {
       const url = mode === 'login' ? `${API_BASE_URL}/login` : `${API_BASE_URL}/register`;
       const response = await axios.post(url, data);
   
-      // Check if the response status is 200 (OK) and if there's a token
-      if (response.status === 200 && response.data.token) {
+      // Check if the response is successful
+      if (response.status === 200 || response.status === 201 ) {
         const token = response.data.token;
-        
-        // Store the token in localStorage
-        localStorage.setItem('token', token);
   
-        // Set the Authorization header for future requests
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  
-        // Set the authenticated state to true
-        setIsAuthenticated(true);
+        if (token) {
+          // Store the token in localStorage
+          localStorage.setItem('token', token);
+      
+          // Set the Authorization header for future requests
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      
+          // Set the authenticated state to true
+          setIsAuthenticated(true);
+        }
   
         // Close the auth modal
         closeAuthModal();
   
-        // Show success toast notification only on login
+        // Show success toast notification based on the mode
         if (mode === 'login') {
           toast.success('Successfully logged in!');
+        } else {
+          toast.success('Successfully signed up!');
         }
       } else {
         // Handle the case where the response is not as expected
-        throw new Error('Invalid login credentials');
+        throw new Error('Unexpected response status');
       }
     } catch (error) {
       // If the server returns a response with an error message
@@ -85,7 +89,7 @@ const HeroSection = () => {
       }
     }
   };
-
+  
   const handleLogout = () => {
     // Remove the token from localStorage and axios headers
     localStorage.removeItem('token');
@@ -125,7 +129,6 @@ const HeroSection = () => {
             href="#pricing"
             className="hover:text-gray-400"
             onClick={() => {
-        
               scrollToSection("pricing");
             }}
           >
@@ -135,7 +138,6 @@ const HeroSection = () => {
             href="#testimonials"
             className="hover:text-gray-400"
             onClick={() => {
-           
               scrollToSection("testimonials");
             }}
           >
@@ -180,10 +182,10 @@ const HeroSection = () => {
           <div></div>
           <div></div>
         </div>
-        <div className={`navbar-menu ${menuOpen ? "active" : ""}`}>
+        <div className={`navbar-menu ${menuOpen ? "active" : ""} flex flex-col justify-center items-center w-full `}>
           <a
             href="#about"
-            className="hover:text-gray-400"
+            className="hover:text-gray-400 text-center w-full max-w-xs"
             onClick={() => {
               scrollToSection("about");
               toggleMenu();
@@ -193,7 +195,7 @@ const HeroSection = () => {
           </a>
           <a
             href="#services"
-            className="hover:text-gray-400"
+            className="hover:text-gray-400 text-center w-full max-w-xs"
             onClick={() => {
               scrollToSection("services");
               toggleMenu();
@@ -203,7 +205,7 @@ const HeroSection = () => {
           </a>
           <a
             href="#pricing"
-            className="hover:text-gray-400"
+            className="hover:text-gray-400 text-center w-full max-w-xs"
             onClick={() => {
               scrollToSection("pricing");
             }}
@@ -212,43 +214,45 @@ const HeroSection = () => {
           </a>
           <a
             href="#testimonials"
-            className="hover:text-gray-400"
+            className="hover:text-gray-400 text-center w-full max-w-xs"
             onClick={() => {
-            
               scrollToSection("testimonials");
-            }}
-          >
-            Testimonals
-          </a>
-          <Link to="/batches-and-webinar" className="hover:text-gray-400">
-              Batches and Webinar
-            </Link>
-          <a
-            href="#talk"
-            className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
-            onClick={() => {
-              openTalkModal();
-              scrollToSection("talk");
               toggleMenu();
             }}
           >
-            Talk to Us
+            Testimonials
           </a>
-          {isAuthenticated ? (
-            <button
-              onClick={handleLogout}
-              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
+          <Link to="/batches-and-webinar" className="hover:text-gray-400 text-center w-full max-w-xs">
+              Batches and Webinar
+          </Link>
+          <div className="flex flex-col space-y-4 mt-4 items-center w-full max-w-xs">
+            <a
+              href="#talk"
+              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md w-full text-center mr-4"
+              onClick={() => {
+                openTalkModal();
+                scrollToSection("talk");
+                toggleMenu();
+              }}
             >
-              Logout
-            </button>
-          ) : (
-            <button
-              onClick={openAuthModal}
-              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
-            >
-              Login/Signup
-            </button>
-          )}
+              Talk to Us
+            </a>
+            {isAuthenticated ? (
+              <button
+                onClick={handleLogout}
+                className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md w-full text-center"
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                onClick={openAuthModal}
+                className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md w-full text-center"
+              >
+                Login/Signup
+              </button>
+            )}
+          </div>
         </div>
       </nav>
       <div className="container mx-auto flex flex-col lg:flex-row items-start justify-center px-6 py-12 relative z-10 mt-5 lg:mt-0 pt-10 lg:mb-20">
