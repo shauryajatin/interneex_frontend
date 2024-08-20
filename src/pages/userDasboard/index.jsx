@@ -3,6 +3,7 @@ import axios from "axios";
 import API_BASE_URL from "../../utils/constants";
 import Navbar from "../../comopnents/navbar";
 import Footer from "../../comopnents/footer";
+import Modal from "../../comopnents/atoms/modals/formModal";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState(null);
@@ -88,6 +89,7 @@ const Dashboard = () => {
         </div>
       </div>
       <Footer />
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 };

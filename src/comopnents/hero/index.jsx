@@ -160,9 +160,9 @@ const HeroSection = () => {
           </Link>
           <button
             onClick={handleAuthNavigation}
-            className="hover:text-gray-400"
+            className=" text-pink-600 font-semibold hover:text-gray-400"
           >
-            Authenticated Link
+            User Dashboard
           </button>
         </div>
         <div className="flex hidden lg:block space-x-4 items-center">
@@ -176,21 +176,7 @@ const HeroSection = () => {
           >
             Talk to Us
           </a>
-          {isAuthenticated ? (
-            <button
-              onClick={handleLogout}
-              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
-            >
-              Logout
-            </button>
-          ) : (
-            <button
-              onClick={openAuthModal}
-              className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
-            >
-              Login/Signup
-            </button>
-          )}
+       
         </div>
         <div
           className={`hamburger lg:hidden ${menuOpen ? "active" : ""}`}
@@ -261,21 +247,7 @@ const HeroSection = () => {
             >
               Talk to Us
             </a>
-            {isAuthenticated ? (
-              <button
-                onClick={handleLogout}
-                className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md w-full text-center"
-              >
-                Logout
-              </button>
-            ) : (
-              <button
-                onClick={openAuthModal}
-                className="cta-button bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md w-full text-center"
-              >
-                Login/Signup
-              </button>
-            )}
+      
           </div>
         </div>
       </nav>

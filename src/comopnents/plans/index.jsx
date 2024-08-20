@@ -195,8 +195,6 @@ import AuthModal from "../atoms/modals/authModal"; // Assuming you have an AuthM
 import UserPlanModal from "../atoms/modals/userPlanModal";
 
 
-
-
 const plans = [
   {
     name: "EXPERT",
@@ -458,7 +456,7 @@ const PricingCard = ({ plan }) => {
         onClick={handleEnrollNow}
         className="transition-transform transform hover:scale-105 hover:shadow-lg duration-200 ease-in-out mb-4 bg-purple-100 text-black w-full py-2 rounded-lg hover:bg-gray-100 transition duration-300 mt-4"
       >
-        Enrol Now
+        Enroll Now
       </button>
       <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} onSubmit={handleAuthSubmit} />
       <UserPlanModal
