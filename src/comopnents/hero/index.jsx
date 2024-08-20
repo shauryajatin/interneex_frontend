@@ -5,7 +5,7 @@ import background from "../../assets/images1/hero.svg";
 import Modal from "../atoms/modals/formModal"; // Existing Modal for "Talk to Us"
 import AuthModal from "../atoms/modals/authModal"; // New AuthModal for Login/Signup
 import { useScroll } from "../../context/scrollContext"; // Import useScroll
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Update to useNavigate
 import axios from 'axios';
 import { toast, ToastContainer } from "react-toastify";
 import API_BASE_URL from "../../utils/constants";
@@ -16,6 +16,7 @@ const HeroSection = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { scrollToSection } = useScroll(); // Use the scroll function
+  const navigate = useNavigate(); // Use navigate instead of useHistory
 
   useEffect(() => {
     // Check if there's a token in localStorage when the component mounts
@@ -38,7 +39,8 @@ const HeroSection = () => {
     setIsTalkModalOpen(false);
   };
 
-  const openAuthModal = () => {
+  const openAuthModal = (mode = 'login') => {
+    // Ensure that the modal opens in login mode
     setIsAuthModalOpen(true);
   };
 
@@ -52,7 +54,7 @@ const HeroSection = () => {
       const response = await axios.post(url, data);
   
       // Check if the response is successful
-      if (response.status === 200 || response.status === 201 ) {
+      if (response.status === 200 || response.status === 201) {
         const token = response.data.token;
   
         if (token) {
@@ -97,6 +99,16 @@ const HeroSection = () => {
 
     // Set the authenticated state to false
     setIsAuthenticated(false);
+  };
+
+  const handleAuthNavigation = () => {
+    if (isAuthenticated) {
+      // Navigate to the new component
+      navigate('/new-component');
+    } else {
+      // Open the auth modal in login mode
+      openAuthModal('login');
+    }
   };
 
   return (
@@ -144,8 +156,14 @@ const HeroSection = () => {
            Testimonials
           </a>
           <Link to="/batches-and-webinar" className="hover:text-gray-400">
-              Batches and Webinar
-            </Link>
+            Batches and Webinar
+          </Link>
+          <button
+            onClick={handleAuthNavigation}
+            className="hover:text-gray-400"
+          >
+            Authenticated Link
+          </button>
         </div>
         <div className="flex hidden lg:block space-x-4 items-center">
           <a
@@ -225,6 +243,12 @@ const HeroSection = () => {
           <Link to="/batches-and-webinar" className="hover:text-gray-400 text-center w-full max-w-xs">
               Batches and Webinar
           </Link>
+          <button
+            onClick={handleAuthNavigation}
+            className="hover:text-gray-400 text-center w-full max-w-xs"
+          >
+            Authenticated Link
+          </button>
           <div className="flex flex-col space-y-4 mt-4 items-center w-full max-w-xs">
             <a
               href="#talk"
