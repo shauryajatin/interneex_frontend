@@ -8,6 +8,15 @@ const Dashboard = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,35 +53,41 @@ const Dashboard = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="min-h-screen bg-purple-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-10">
-        {/* User Info */}
-        <div className="flex-1">
-          <div className="mb-4">
-            <h2 className="text-3xl font-semibold text-gray-900">{userData.name}</h2>
-            <p className="text-gray-600">{userData.email}</p>
-            <p className="text-gray-600">{userData.number}</p>
-          </div>
+      <Navbar homeIcon={true} openModal={openModal}/>
+      <div className="min-h-screen bg-purple-100 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center lg:text-left">
+          <h1 className="text-5xl font-extrabold text-gray-900">Dashboard</h1>
+          <p className="text-lg text-gray-600 mt-2">Welcome to your personalized dashboard.</p>
         </div>
 
-        {/* Course Details */}
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Batch/Course Details</h3>
-          {userData.hasPurchasedCourse && userData.courseDetails ? (
-            <div className="p-6 bg-indigo-50 rounded-lg shadow-md">
-              <h4 className="text-lg font-semibold text-indigo-700 mb-2">{userData.courseDetails.courseName}</h4>
-              <p className="text-gray-700"><strong>Duration:</strong> {userData.courseDetails.courseDuration}</p>
-              <p className="text-gray-700"><strong>Purchase Date:</strong> {new Date(userData.courseDetails.purchaseDate).toLocaleDateString()}</p>
-              <p className="text-gray-700"><strong>Receipt ID:</strong> {userData.courseDetails.receiptId}</p>
+        <div className="mt-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* User Info */}
+          <div className="col-span-1 bg-white shadow-lg rounded-lg p-8">
+            <div className="text-left">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">User Information</h2>
+              <p className="text-xl font-medium text-gray-800 mb-2"><strong>Name:</strong> {userData.name}</p>
+              <p className="text-xl font-medium text-gray-800 mb-2"><strong>Email:</strong> {userData.email}</p>
+              <p className="text-xl font-medium text-gray-800 mb-2"><strong>Phone Number:</strong> {userData.number}</p>
             </div>
-          ) : (
-            <p className="text-gray-500">No batches selected</p>
-          )}
+          </div>
+
+          {/* Course Details */}
+          <div className="col-span-2 bg-white shadow-lg rounded-lg p-8 text-left" >
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Batch/Course Details</h2>
+            {userData.hasPurchasedCourse && userData.courseDetails ? (
+              <div className="p-6 bg-indigo-50 rounded-lg shadow-md">
+                <h4 className="text-2xl font-bold text-indigo-700 mb-4">{userData.courseDetails.courseName}</h4>
+                <p className="text-xl text-gray-800 mb-2"><strong>Duration:</strong> {userData.courseDetails.courseDuration}</p>
+                <p className="text-xl text-gray-800 mb-2"><strong>Purchase Date:</strong> {new Date(userData.courseDetails.purchaseDate).toLocaleDateString()}</p>
+                <p className="text-xl text-gray-800"><strong>Receipt ID:</strong> {userData.courseDetails.receiptId}</p>
+              </div>
+            ) : (
+              <p className="text-xl text-gray-500">No batches selected</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };
