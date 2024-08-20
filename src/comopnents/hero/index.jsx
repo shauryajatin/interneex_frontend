@@ -104,7 +104,7 @@ const HeroSection = () => {
   const handleAuthNavigation = () => {
     if (isAuthenticated) {
       // Navigate to the new component
-      navigate('/new-component');
+      navigate('/user');
     } else {
       // Open the auth modal in login mode
       openAuthModal('login');

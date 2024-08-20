@@ -13,6 +13,7 @@ import Bulletin from './pages/bulletin';
 import PrivacyPolicy from './pages/Privacy';
 import TermsAndConditions from './pages/T&C';
 import CancellationRefundPolicy from './pages/Refund';
+import Dashboard from './pages/userDasboard';
 // import AuthWrapper from './context/authContext';
 import { AuthProvider } from './context/authContext'; // Import the AuthProvider
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+            <Route path="/user" element={<Dashboard />} />
           </Routes>
         </div>
       </Router>
