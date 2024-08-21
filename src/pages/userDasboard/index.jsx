@@ -52,6 +52,8 @@ const Dashboard = () => {
     return <div className="text-center text-red-500">Error: {error}</div>;
   }
 
+
+
   return (
     <>
       <Navbar homeIcon={true} openModal={openModal}/>

@@ -1,13 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { useScroll } from "../../context/scrollContext"; // Import useScroll
+import axios from "axios";
 
 const Navbar = ({ openModal, homeIcon }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollToSection } = useScroll(); // Use the scroll function
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+  const handleLogout = () => {
+    // Remove the token from localStorage and axios headers
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+
+    // Set the authenticated state to false
+    setIsAuthenticated(false);
+    navigate('/')
   };
 
   return (
@@ -16,9 +28,17 @@ const Navbar = ({ openModal, homeIcon }) => {
 
       <div className="navbar-items hidden lg:block flex space-x-6">
         {homeIcon ? (
+          <>
           <Link to="/" className="text-white text-xl font-bold">
             Home
           </Link>
+            <button
+            onClick={handleLogout}
+            className="text-white text-xl font-bold"
+          >
+            Logout
+          </button>
+          </>
         ) : (
           <>
             <a
@@ -49,6 +69,7 @@ const Navbar = ({ openModal, homeIcon }) => {
             >
               Testimonials
             </a>
+          
            
           </>
         )}

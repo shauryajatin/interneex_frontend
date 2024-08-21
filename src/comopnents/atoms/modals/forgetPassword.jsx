@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../../../utils/constants';
 
 const ForgotPasswordModal = ({ toggleModal }) => {
     const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ const ForgotPasswordModal = ({ toggleModal }) => {
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/auth/forgot-password', { email });
+            const response = await axios.post(`${API_BASE_URL}/forgotPassword`, { email });
             setMessage(response.data.message);
             setError('');
         } catch (err) {

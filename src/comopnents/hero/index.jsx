@@ -50,47 +50,64 @@ const HeroSection = () => {
 
   const handleAuthSubmit = async (mode, data) => {
     try {
-      const url = mode === 'login' ? `${API_BASE_URL}/login` : `${API_BASE_URL}/register`;
-      const response = await axios.post(url, data);
-  
-      // Check if the response is successful
-      if (response.status === 200 || response.status === 201) {
-        const token = response.data.token;
-  
-        if (token) {
-          // Store the token in localStorage
-          localStorage.setItem('token', token);
-      
-          // Set the Authorization header for future requests
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      
-          // Set the authenticated state to true
-          setIsAuthenticated(true);
-        }
-  
-        // Close the auth modal
-        closeAuthModal();
-  
-        // Show success toast notification based on the mode
+        let url;
+
+        // Determine the API endpoint based on the mode
         if (mode === 'login') {
-          toast.success('Successfully logged in!');
-        } else {
-          toast.success('Successfully signed up!');
+            url = `${API_BASE_URL}/login`;
+        } else if (mode === 'signup') {
+            url = `${API_BASE_URL}/register`;
+        } else if (mode === 'forgotPassword') {
+            url = `${API_BASE_URL}/forgotPassword`;
         }
-      } else {
-        // Handle the case where the response is not as expected
-        throw new Error('Unexpected response status');
-      }
+        
+
+        const response = await axios.post(url, data);
+
+        // Handle the response for login and signup
+        if (mode === 'login' || mode === 'signup') {
+            if (response.status === 200 || response.status === 201) {
+                const token = response.data.token;
+
+                if (token) {
+                    // Store the token in localStorage
+                    localStorage.setItem('token', token);
+
+                    // Set the Authorization header for future requests
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+                    // Set the authenticated state to true
+                    setIsAuthenticated(true);
+                }
+
+                // Close the auth modal
+                closeAuthModal();
+
+                // Show success toast notification based on the mode
+                toast.success(`Successfully ${mode === 'login' ? 'logged in' : 'signed up'}!`);
+            } else {
+                throw new Error('Unexpected response status');
+            }
+        }
+
+        // Handle the response for forgotPassword
+        if (mode === 'forgotPassword') {
+            if (response.status === 200) {
+                toast.success('Password reset email sent!');
+            } else {
+                throw new Error('Unexpected response status');
+            }
+        }
     } catch (error) {
-      // If the server returns a response with an error message
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(`Authentication failed: ${error.response.data.message}`);
-      } else {
-        // Generic error message if something else went wrong
-        toast.error('Authentication failed. Please try again.');
-      }
+        // Handle errors for all modes
+        if (error.response && error.response.data && error.response.data.message) {
+            toast.error(`Authentication failed: ${error.response.data.message}`);
+        } else {
+            toast.error('Authentication failed. Please try again.');
+        }
     }
-  };
+};
+
   
   const handleLogout = () => {
     // Remove the token from localStorage and axios headers

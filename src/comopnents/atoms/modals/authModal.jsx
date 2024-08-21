@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
-import ForgotPasswordModal from './forgetPassword';
 
 const AuthModal = ({ isOpen, onClose, onSubmit }) => {
-  const [authMode, setAuthMode] = useState('login'); // Track login/signup mode
-  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
+  const [authMode, setAuthMode] = useState('login'); // Track login/signup/forgotPassword mode
+
   // Validation Schema for Formik
   const validationSchema = Yup.object().shape({
     name: authMode === 'signup' ? Yup.string().required('Name is required') : null,
     email: Yup.string().email('Invalid email address').required('Email is required'),
     number: authMode === 'signup' ? Yup.string().required('Number is required') : null,
-    password: Yup.string().required('Password is required'),
+    password: authMode !== 'forgotPassword' ? Yup.string().required('Password is required') : null,
   });
 
   const initialValues = {
@@ -21,17 +20,16 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
     number: '',
     password: '',
   };
-  const toggleForgotPasswordModal = () => {
-    setShowForgotPasswordModal(!showForgotPasswordModal);
-};
 
   const handleSubmit = (values) => {
     onSubmit(authMode, values);
-    // if (authMode === 'login') {
-    //   toast.success('Successfully logged in!');
-    // } else {
-    //   toast.success('Successfully signed up!');
-    // }
+    if (authMode === 'login') {
+      toast.success('Successfully logged in!');
+    } else if (authMode === 'signup') {
+      toast.success('Successfully signed up!');
+    } else if (authMode === 'forgotPassword') {
+      toast.success('Password reset email sent!');
+    }
   };
 
   if (!isOpen) return null;
@@ -47,7 +45,9 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
         </button>
         <div className="modal-content">
           <h2 className="text-2xl font-bold mb-4">
-            {authMode === 'login' ? 'Login' : 'Sign Up'}
+            {authMode === 'login' && 'Login'}
+            {authMode === 'signup' && 'Sign Up'}
+            {authMode === 'forgotPassword' && 'Forgot Password'}
           </h2>
           <Formik
             initialValues={initialValues}
@@ -78,52 +78,74 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
                   </>
                 )}
-                <div className="mb-2">
-                  <Field
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    className={`p-2 w-full border rounded-md text-black ${touched.email && errors.email ? 'border-red-500' : ''}`}
-                  />
-                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-                </div>
-                <div className="mb-4">
-                  <Field
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className={`p-2 w-full border rounded-md text-black ${touched.password && errors.password ? 'border-red-500' : ''}`}
-                  />
-                  <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-                </div>
+
+                {(authMode === 'login' || authMode === 'signup' || authMode === 'forgotPassword') && (
+                  <div className="mb-2">
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      className={`p-2 w-full border rounded-md text-black ${touched.email && errors.email ? 'border-red-500' : ''}`}
+                    />
+                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+                  </div>
+                )}
+
+                {(authMode === 'login' || authMode === 'signup') && (
+                  <div className="mb-4">
+                    <Field
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      className={`p-2 w-full border rounded-md text-black ${touched.password && errors.password ? 'border-red-500' : ''}`}
+                    />
+                    <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   className="w-full bg-gradient-to-r from-purple-400 to-pink-500 text-white px-4 py-2 rounded-md"
                 >
-                  {authMode === 'login' ? 'Login' : 'Sign Up'}
+                  {authMode === 'login' && 'Login'}
+                  {authMode === 'signup' && 'Sign Up'}
+                  {authMode === 'forgotPassword' && 'Send Reset Link'}
                 </button>
-                <button
-                className="mt-4 text-blue-500 hover:underline"
-                onClick={toggleForgotPasswordModal}
-            >
-                Forgot Password?
-            </button>
-
-            {showForgotPasswordModal && (
-                <ForgotPasswordModal toggleModal={toggleForgotPasswordModal} />
-            )}
               </Form>
             )}
           </Formik>
-          <button
-            type="button"
-            className="mt-4 text-blue-500 hover:underline focus:outline-none"
-            onClick={() => setAuthMode(authMode === 'login' ? 'signup' : 'login')}
-          >
-            {authMode === 'login'
-              ? "Don't have an account? Sign Up"
-              : 'Already have an account? Login'}
-          </button>
+
+          {authMode !== 'forgotPassword' && (
+            <button
+              type="button"
+              className="mt-4 text-blue-500 hover:underline focus:outline-none"
+              onClick={() => setAuthMode(authMode === 'login' ? 'signup' : 'login')}
+            >
+              {authMode === 'login'
+                ? "Don't have an account? Sign Up"
+                : 'Already have an account? Login'}
+            </button>
+          )}
+<br></br>
+          {authMode === 'login' && (
+            <button
+              type="button"
+              className="mt-4 text-blue-500 hover:underline focus:outline-none"
+              onClick={() => setAuthMode('forgotPassword')}
+            >
+              Forgot Password?
+            </button>
+          )}
+
+          {authMode === 'forgotPassword' && (
+            <button
+              type="button"
+              className="mt-4 text-blue-500 hover:underline focus:outline-none"
+              onClick={() => setAuthMode('login')}
+            >
+              Back to Login
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -131,5 +153,3 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
 };
 
 export default AuthModal;
-
-
