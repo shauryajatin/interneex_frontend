@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import ForgotPasswordModal from './forgetPassword';
 
 const AuthModal = ({ isOpen, onClose, onSubmit }) => {
   const [authMode, setAuthMode] = useState('login'); // Track login/signup mode
-
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
   // Validation Schema for Formik
   const validationSchema = Yup.object().shape({
     name: authMode === 'signup' ? Yup.string().required('Name is required') : null,
@@ -20,6 +21,9 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
     number: '',
     password: '',
   };
+  const toggleForgotPasswordModal = () => {
+    setShowForgotPasswordModal(!showForgotPasswordModal);
+};
 
   const handleSubmit = (values) => {
     onSubmit(authMode, values);
@@ -98,6 +102,16 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
                 >
                   {authMode === 'login' ? 'Login' : 'Sign Up'}
                 </button>
+                <button
+                className="mt-4 text-blue-500 hover:underline"
+                onClick={toggleForgotPasswordModal}
+            >
+                Forgot Password?
+            </button>
+
+            {showForgotPasswordModal && (
+                <ForgotPasswordModal toggleModal={toggleForgotPasswordModal} />
+            )}
               </Form>
             )}
           </Formik>
