@@ -17,6 +17,8 @@ import Dashboard from './pages/userDasboard';
 // import AuthWrapper from './context/authContext';
 import { AuthProvider } from './context/authContext'; // Import the AuthProvider
 import PasswordReset from './pages/passwordReset';
+// import AdminLogin from './pages/admin';
+// import UserList from './pages/userList';
 
 function App() {
   return (
@@ -42,6 +44,9 @@ function App() {
             <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
             <Route path="/user" element={<Dashboard />} />
             <Route path="/reset-password" element={<PasswordReset />} />
+            {/* <Route path="/secret-admin" element={<AdminLogin />} />
+            <Route path="/userlist" element={<UserList />} /> */}
+
           </Routes>
         </div>
       </Router>

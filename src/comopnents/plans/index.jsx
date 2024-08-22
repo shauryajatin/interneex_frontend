@@ -210,7 +210,7 @@ const plans = [
       "Job Assistance",
       "3 months Non paid Internship Experience Certificate valid in all companies across the Globe.",
     ],
-    backgroundColor: "bg-lime-900",
+    backgroundColor: "bg-cyan-700",
     textColor: "text-white",
   },
   {
@@ -351,7 +351,7 @@ const PricingCard = ({ plan }) => {
     const token = localStorage.getItem("token");
   
     if (!token) {
-      openAuthModal('signup'); // Pass 'signup' as the default mode
+      openAuthModal(); // Pass 'signup' as the default mode
       return;
     }
   

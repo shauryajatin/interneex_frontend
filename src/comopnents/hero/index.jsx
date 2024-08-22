@@ -175,13 +175,16 @@ const HeroSection = () => {
           <Link to="/batches-and-webinar" className="hover:text-gray-400">
             Batches and Webinar
           </Link>
+         
           <button
             onClick={handleAuthNavigation}
             className=" text-pink-600 font-semibold hover:text-gray-400"
           >
             User Dashboard
           </button>
+         
         </div>
+     
         <div className="flex hidden lg:block space-x-4 items-center">
           <a
             href="#talk"
@@ -192,9 +195,16 @@ const HeroSection = () => {
             }}
           >
             Talk to Us
-          </a>
-       
+           </a>
+          {/* {isAuthenticated && (
+            <div className="relative w-10 h-10 text-3xl text-gray-400">
+              <FontAwesomeIcon icon={faUserCircle} />
+            </div>
+          )}  */}
+        
         </div>
+      
+       
         <div
           className={`hamburger lg:hidden ${menuOpen ? "active" : ""}`}
           onClick={toggleMenu}
@@ -264,6 +274,8 @@ const HeroSection = () => {
             >
               Talk to Us
             </a>
+         
+
       
           </div>
         </div>
