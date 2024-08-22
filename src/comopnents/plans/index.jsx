@@ -261,6 +261,8 @@ const PricingCard = ({ plan }) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+
+
   function parseJwt(token) {
     try {
       const base64Url = token.split('.')[1];
@@ -349,7 +351,7 @@ const PricingCard = ({ plan }) => {
     const token = localStorage.getItem("token");
   
     if (!token) {
-      openAuthModal();
+      openAuthModal('signup'); // Pass 'signup' as the default mode
       return;
     }
   
@@ -366,6 +368,7 @@ const PricingCard = ({ plan }) => {
       alert("Error processing your request. Please try again.");
     }
   };
+  
   
   const handlePayment = async (plan) => {
     try {
@@ -487,7 +490,7 @@ const PricingCard = ({ plan }) => {
       >
         Enroll Now
       </button>
-      <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} onSubmit={handleAuthSubmit} />
+      <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} onSubmit={handleAuthSubmit}    />
       <UserPlanModal
         isOpen={isUserPlanModalOpen}
         onClose={closeUserPlanModal}

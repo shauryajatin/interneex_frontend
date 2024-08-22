@@ -4,7 +4,8 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 const AuthModal = ({ isOpen, onClose, onSubmit }) => {
-  const [authMode, setAuthMode] = useState('login'); // Track login/signup/forgotPassword mode
+  const [authMode, setAuthMode] = useState('login');
+   // Track login/signup/forgotPassword mode
 
   // Validation Schema for Formik
   const validationSchema = Yup.object().shape({
