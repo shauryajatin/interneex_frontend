@@ -367,7 +367,6 @@ const PricingCard = ({ plan }) => {
     }
   };
   
-
   const handlePayment = async (plan) => {
     try {
       const token = localStorage.getItem("token");
@@ -376,6 +375,7 @@ const PricingCard = ({ plan }) => {
   
       const amountInPaise = parseFloat(plan.price.replace("₹", "").replace(/,/g, "")) * 100;
   
+      // Step 1: Create the order
       const response = await fetch(`${API_BASE_URL}/create-order`, {
         method: "POST",
         headers: {
@@ -399,11 +399,10 @@ const PricingCard = ({ plan }) => {
       if (!response.ok) {
         throw new Error(`Failed to create order. Response status: ${response.status}`);
       }
-
+  
       const order = await response.json();
-
       const razorpayKeyId = process.env.REACT_APP_RAZORPAY_KEY_ID;
-
+  
       if (order.id) {
         const options = {
           key: razorpayKeyId,
@@ -412,8 +411,37 @@ const PricingCard = ({ plan }) => {
           name: "Interneex",
           description: `Purchase of ${plan.name} Plan`,
           order_id: order.id,
-          handler: function (response) {
-            toast.success("Payment successful! Payment ID: " + response.razorpay_payment_id);
+          handler: async function (response) {
+            try {
+              // Payment successful, now verify it
+              const verifyResponse = await fetch(`${API_BASE_URL}/verify-payment`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  orderId: order.id,
+                  paymentId: response.razorpay_payment_id,
+                  notes: {
+                    customer_email: email,
+                    plan_name: plan.name,
+                    plan_duration: plan.duration,
+                  },
+                }),
+              });
+  
+              if (verifyResponse.ok) {
+                const verifyResult = await verifyResponse.json();
+                toast.success("Payment verified successfully! " + verifyResult.message);
+              } else {
+                const errorData = await verifyResponse.json();
+                toast.error("Payment verification failed: " + errorData.message);
+              }
+            } catch (error) {
+              console.error("Error verifying payment:", error);
+              toast.error("Error verifying payment. Please try again.");
+            }
           },
           prefill: {
             name,
@@ -424,7 +452,7 @@ const PricingCard = ({ plan }) => {
             color: "#3399cc",
           },
         };
-
+  
         const rzp = new window.Razorpay(options);
         rzp.open();
         closeUserPlanModal(); // Close the modal after opening Razorpay
@@ -437,6 +465,7 @@ const PricingCard = ({ plan }) => {
       alert("Error during payment. Please try again.");
     }
   };
+  
 
   return (
     <div
