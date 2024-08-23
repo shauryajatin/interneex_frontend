@@ -5,21 +5,21 @@ import facebook from "../../assets/images/Facebook.png";
 const testimonials = [
   {
     quote: "The team went above and beyond to ensure my issue was resolved quickly and efficiently. Truly outstanding!",
-    name: "Jessica Devis",
+    name: "Raghav Singh",
     title: "Full Stack Developer",
     company: "Netflix",
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg",
   },
   {
     quote: "It has broadened my horizons and helped me advance my career. The community is incredibly supportive.",
-    name: "Marcell Glock",
+    name: "Vanshita Mishra ",
     title: "Graphic Designer",
     company: "Facebook",
     logo: facebook, // Fixed logo link to use an SVG version
   },
   {
     quote: "Its intuitive design and powerful features make it indispensable. I can't imagine going back to life before it!",
-    name: "Emma Roberts",
+    name: "Rahul Kumar",
     title: "Chief Executive",
     company: "Spotify",
     logo: "https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg",

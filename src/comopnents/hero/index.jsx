@@ -180,7 +180,7 @@ const HeroSection = () => {
             onClick={handleAuthNavigation}
             className=" text-pink-600 font-semibold hover:text-gray-400"
           >
-            User Dashboard
+            User 
           </button>
          
         </div>
@@ -258,9 +258,9 @@ const HeroSection = () => {
           </Link>
           <button
             onClick={handleAuthNavigation}
-            className="hover:text-gray-400 text-center w-full max-w-xs"
+            className="text-pink-600 font-semibold hover:text-gray-400 text-center w-full max-w-xs"
           >
-            Authenticated Link
+            User
           </button>
           <div className="flex flex-col space-y-4 mt-4 items-center w-full max-w-xs">
             <a

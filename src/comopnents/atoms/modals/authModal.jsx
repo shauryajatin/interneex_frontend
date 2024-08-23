@@ -25,11 +25,11 @@ const AuthModal = ({ isOpen, onClose, onSubmit }) => {
   const handleSubmit = (values) => {
     onSubmit(authMode, values);
     if (authMode === 'login') {
-      toast.success('Successfully logged in!');
+      // toast.success('Successfully logged in!');
     } else if (authMode === 'signup') {
-      toast.success('Successfully signed up!');
+      // toast.success('Successfully signed up!');
     } else if (authMode === 'forgotPassword') {
-      toast.success('Password reset email sent!');
+      // toast.success('Password reset email sent!');
     }
   };
 
